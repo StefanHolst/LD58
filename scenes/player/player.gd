@@ -53,4 +53,4 @@ func move_camera(movement: Vector2):
     camera.transform.basis = Basis()
     
     rotate_object_local(Vector3(0, 1, 0), -camera_rotation_basis.x)
-    camera.rotate_object_local(Vector3(1, 0, 0), camera_rotation_basis.y)
+    camera.rotate_object_local(Vector3(1, 0, 0), -camera_rotation_basis.y)
