@@ -8,6 +8,7 @@
 
 [node name="Node3D" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
 script = ExtResource("1_8afob")
+gravity = Vector3(0, 1, 0)
 camera = NodePath("Camera3D")
 mouse_sensitivity = 0.00101
 
