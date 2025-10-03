@@ -1,4 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://wob35ulaccic"]
+[gd_scene load_steps=7 format=3 uid="uid://wob35ulaccic"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://b38crkealkwly" path="res://resource/Pap.tres" id="1_fabr0"]
+[ext_resource type="PackedScene" uid="uid://b2qwnvo6no8ye" path="res://assets/blender/papcat.blend" id="1_jplww"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_jbawp"]
 size = Vector3(1, 1, 0.01)
@@ -7,7 +10,7 @@ size = Vector3(1, 1, 0.01)
 albedo_color = Color(0.2584744, 0.28334618, 0.07146127, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jplww"]
-size = Vector3(1, 1, 0.01)
+size = Vector3(2.9838984, 3.2792382, 0.15)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jbawp"]
 albedo_color = Color(0.43712005, 0.43712005, 0.43712005, 1)
@@ -20,26 +23,37 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0211134, 0)
 node_a = NodePath("RigidBody3D2")
 node_b = NodePath("RigidBody3D")
 exclude_nodes_from_collision = false
-params/bias = 0.0
 
 [node name="RigidBody3D" type="RigidBody3D" parent="HingeJoint3D"]
-transform = Transform3D(-4.0779597e-08, 0.3600619, 0.9329283, 1.573881e-08, 0.9329283, -0.3600619, -1, 0, -4.3711385e-08, 0.18, 0.465, 0)
+transform = Transform3D(-4.0779597e-08, 0.3600619, 0.9329283, 1.573881e-08, 0.9329283, -0.3600619, -1, 0, -4.3711385e-08, 0.09754127, 0.46500003, 0)
+physics_material_override = ExtResource("1_fabr0")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="HingeJoint3D/RigidBody3D"]
+visible = false
 mesh = SubResource("BoxMesh_jbawp")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_jplww")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HingeJoint3D/RigidBody3D"]
+transform = Transform3D(1, -1.2860475e-08, 1.9343602e-09, 1.2860252e-08, 0.9557471, -0.2942088, 1.9346373e-09, 0.2942088, 0.9557471, 0.12718962, 1.307309, 0.42119956)
 shape = SubResource("BoxShape3D_jplww")
 
+[node name="papcat" parent="HingeJoint3D/RigidBody3D" instance=ExtResource("1_jplww")]
+transform = Transform3D(1, -1.1986901e-08, 1.6756836e-09, 1.1986919e-08, 0.9616653, -0.2742281, 1.6756836e-09, 0.2742281, 0.9616653, 2.371419e-08, -1.8676672, -0.5425175)
+
 [node name="RigidBody3D2" type="RigidBody3D" parent="HingeJoint3D"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.5, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.08800852, -0.5, 0)
+physics_material_override = ExtResource("1_fabr0")
+
+[node name="papcat" parent="HingeJoint3D/RigidBody3D2" instance=ExtResource("1_jplww")]
+transform = Transform3D(-0.99889565, -0.0019773357, 0.046942875, -7.502289e-10, -0.99911404, -0.042084806, 0.04698445, -0.042038333, 0.99801064, 0.34794712, 1.925246, 1.4901161e-08)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="HingeJoint3D/RigidBody3D2"]
+visible = false
 mesh = SubResource("BoxMesh_jbawp")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_jbawp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HingeJoint3D/RigidBody3D2"]
+transform = Transform3D(1, -2.7682636e-09, 8.7748475e-11, 2.768263e-09, 0.9979926, -0.063330494, 8.7748475e-11, 0.063330494, 0.9979926, 0.2275331, -1.2047693, -0.005173214)
 shape = SubResource("BoxShape3D_jplww")

@@ -25,22 +25,17 @@ script = ExtResource("1_ig7tw")
 visible = false
 mesh = SubResource("BoxMesh_7dm0k")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.63889414, 0.7638928, -0.09100569, -0.4302094, 0.45284778, 0.7809282, 0.63775724, -0.4597789, 0.61795574, -1.9083719, 3, 2.0976267)
+light_energy = 7.918
+shadow_enabled = true
+
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.90211135, -0.2295873, 0.36535573, 1.2277098e-08, 0.8467043, 0.53206366, -0.43150333, -0.4799808, 0.76382154, 1.5871686, 2.451748, 3.805365)
+transform = Transform3D(0.90211135, -0.22958732, 0.36535573, 1.2277098e-08, 0.8467043, 0.53206384, -0.43150333, -0.4799808, 0.76382154, 1.5871686, 4.601714, 5.9316616)
 fov = 42.187504
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3114066, 5.450686, 3.382237)
-light_energy = 12.959
-light_size = 0.557
-
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(0.9291326, -0.053490184, -0.36585718, 0.36841136, 0.21794882, 0.9037541, 0.031396165, -0.97449327, 0.22220977, -2.7629054, 5.6418037, 1.0880294)
-light_energy = 10.212
-spot_range = 17.647549
-
 [node name="Pap" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9503181, 0)
+transform = Transform3D(0.92130077, -0.38885057, 0, 0.38885057, 0.92130077, 0, 0, 0, 1, 0, 5.3476563, 0)
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
