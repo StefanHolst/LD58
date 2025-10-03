@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://wob35ulaccic"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jbawp"]
+size = Vector3(1, 1, 0.01)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jplww"]
+albedo_color = Color(0.2584744, 0.28334618, 0.07146127, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jplww"]
+size = Vector3(1, 1, 0.01)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jbawp"]
+albedo_color = Color(0.43712005, 0.43712005, 0.43712005, 1)
+metallic = 0.2
+
+[node name="Pap" type="Node3D"]
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0211134, 0)
+node_a = NodePath("RigidBody3D2")
+node_b = NodePath("RigidBody3D")
+exclude_nodes_from_collision = false
+params/bias = 0.0
+
+[node name="RigidBody3D" type="RigidBody3D" parent="HingeJoint3D"]
+transform = Transform3D(-4.0779597e-08, 0.3600619, 0.9329283, 1.573881e-08, 0.9329283, -0.3600619, -1, 0, -4.3711385e-08, 0.18, 0.465, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="HingeJoint3D/RigidBody3D"]
+mesh = SubResource("BoxMesh_jbawp")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_jplww")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HingeJoint3D/RigidBody3D"]
+shape = SubResource("BoxShape3D_jplww")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="HingeJoint3D"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.5, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="HingeJoint3D/RigidBody3D2"]
+mesh = SubResource("BoxMesh_jbawp")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_jbawp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HingeJoint3D/RigidBody3D2"]
+shape = SubResource("BoxShape3D_jplww")
