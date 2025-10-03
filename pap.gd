@@ -1,8 +1,6 @@
 extends Node3D
 
-<<<<<<< Updated upstream
 @onready var papPlayer: AudioStreamPlayer3D = $AudioStreamPlayer3D
-
 
 func _on_rigid_body_3d_body_entered(body: Node) -> void:
 	#if not papPlayer.playing:
@@ -10,12 +8,11 @@ func _on_rigid_body_3d_body_entered(body: Node) -> void:
 	papPlayer.play()
 	print("Enter ", body)
 
-
 func _on_rigid_body_3d_body_exited(body: Node) -> void:
 	#print("Exit ", body)
 	pass
 	#papPlayer.stop()
-=======
+
 func _ready() -> void:
 	# disable hinge / physics
 	$HingeJoint3D/RigidBody3D.freeze = true
@@ -25,4 +22,3 @@ func enable():
 	# Enable hinge / physics - Now everything starts collapsing
 	$HingeJoint3D/RigidBody3D.freeze = false
 	$HingeJoint3D/RigidBody3D2.freeze = false
->>>>>>> Stashed changes

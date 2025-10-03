@@ -10,7 +10,7 @@ enum Direction {
 
 @abstract class Tile:
 	var type: String
-	@abstract func is_Compatible(other: Tile, direction: Direction) -> bool;
+	@abstract func is_Compatible(other: Tile, direction: Direction) -> bool
 
 class test extends Tile:
 	func is_Compatible(other: Tile, direction: Direction) -> bool:
