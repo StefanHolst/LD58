@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var speed: float = 3
 @export var jump_height: float = 2.0
 @export_range(0.00001, 0.01) var mouse_sensitivity: float = 0.01 
+@onready var ray_cast_3d: RayCast3D = $Camera3D/RayCast3D
 
 var camera_rotation_basis = Vector2(0, 0)
 

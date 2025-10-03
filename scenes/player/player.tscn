@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://deus3skfx84ny"]
+[gd_scene load_steps=6 format=3 uid="uid://deus3skfx84ny"]
 
 [ext_resource type="Script" uid="uid://bdh3v0su3lotm" path="res://scenes/player/player.gd" id="1_8afob"]
+[ext_resource type="Script" uid="uid://i6rif24p1k4f" path="res://scenes/player/grab.gd" id="2_dovo2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x7p2l"]
 
@@ -28,3 +29,10 @@ fov = 45.0
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
 transform = Transform3D(0.1538769, 0, 0, 0, 0.25224686, 0, 0, 0, 1, 0.26030472, -0.23928154, -0.7265111)
 mesh = SubResource("BoxMesh_8afob")
+
+[node name="grab" type="RayCast3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -0.0032972407, -0.99785405, 0, 2.8622787, -0.0011494915, 0.28517473, -0.24450481, -0.31017515)
+script = ExtResource("2_dovo2")
+
+[node name="grab_point" type="Node3D" parent="Camera3D/grab"]
+transform = Transform3D(1, 0, 0, 0, -0.0011519628, 0.99999934, 0, -0.99999934, -0.0011519628, -0.035930276, -1.1641827, -0.10833639)
