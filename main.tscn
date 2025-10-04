@@ -1,15 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c6dd3yagmchk6"]
+[gd_scene load_steps=8 format=3 uid="uid://c6dd3yagmchk6"]
 
 [ext_resource type="Script" uid="uid://bxbhspteetyt8" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://wob35ulaccic" path="res://Pap.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://ctf6jkm2m6ksn" path="res://assets/blender/island.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://deus3skfx84ny" path="res://scenes/player/player.tscn" id="3_h2yge"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7dm0k"]
-albedo_color = Color(0.4775424, 0.19324198, 0.17215002, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_7dm0k"]
-material = SubResource("StandardMaterial3D_7dm0k")
+[ext_resource type="PackedScene" uid="uid://c264qgxmeykl4" path="res://assets/blender/papcat.tscn" id="5_lquwl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lquwl"]
 
@@ -18,22 +13,19 @@ material = SubResource("StandardMaterial3D_7dm0k")
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_ig7tw")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
-mesh = SubResource("BoxMesh_7dm0k")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.63889414, 0.7638928, -0.09100569, -0.4302094, 0.45284778, 0.7809282, 0.63775724, -0.4597789, 0.61795574, -1.9083719, 3, 2.0976267)
-light_energy = 7.918
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.90211135, -0.22958732, 0.36535573, 1.2277098e-08, 0.8467043, 0.53206384, -0.43150333, -0.4799808, 0.76382154, 1.5871686, 4.601714, 5.9316616)
+visible = false
 current = true
 fov = 42.187504
 
 [node name="Pap" parent="." instance=ExtResource("2_0xm2m")]
 transform = Transform3D(0.99521023, -0.097756594, 0, 0.097756594, 0.99521023, 0, 0, 0, 1, 0.27787733, 4.3884277, 0.445323)
+visible = false
 
 [node name="Ground" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -42,7 +34,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -14.391854, 0)
 
 [node name="player" parent="." instance=ExtResource("3_h2yge")]
-transform = Transform3D(-0.9217617, 0, 0.38775688, 0, 1, 0, -0.38775688, 0, -0.9217617, -0.015426397, 1.252872, 3.9587202)
+transform = Transform3D(-0.9217617, 0, 0.38775688, 0, 1, 0, -0.38775688, 0, -0.9217617, -0.015426397, 3.6076055, 3.9587202)
 gravity = Vector3(0, -50, 0)
 speed = 10.0
 jump_height = 4.0
@@ -55,3 +47,17 @@ shape = SubResource("BoxShape3D_lquwl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="box"]
 mesh = SubResource("BoxMesh_1bvp3")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="papcat2" parent="Node3D" instance=ExtResource("5_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.034128, 0, 5.9163)
+
+[node name="papcat" parent="Node3D" instance=ExtResource("5_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.74821, 0, 8.402796)
+
+[node name="papcat3" parent="Node3D" instance=ExtResource("5_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.119177, -7.52446, -15.871056)
+
+[node name="papcat4" parent="Node3D" instance=ExtResource("5_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.98641, -11.41741, -15.026706)

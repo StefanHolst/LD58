@@ -1,5 +1,7 @@
 extends Node3D
 
+const WC = preload("res://WaveformCollapse.gd")
+
 @export var mouse_sensitivity: float = 0.001
 var rotation_x: float = 0.0
 var rotation_y: float = 0.0
@@ -10,12 +12,9 @@ var move_speed: float = 0.1
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	Engine.time_scale = 0.5
+	#Engine.time_scale = 0.5
 
 func _process(delta: float) -> void:
-	# Spin around Y axis
-	$MeshInstance3D.rotate_y(deg_to_rad(spin_speed * delta))
-	
 	# Move camera
 	moveCamera()
 	
@@ -28,6 +27,8 @@ func _input(event: InputEvent) -> void:
 			$Camera3D.position.z -= move_speed
 		if event.keycode == KEY_E:
 			$Pap.enable()
+		if event.keycode == KEY_K:
+			var generator = WC.Generator.new(10, 10)
 
 func rotateCamera(event: InputEvent) -> void:
 	rotation_y -= event.relative.x * mouse_sensitivity
