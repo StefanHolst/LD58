@@ -1,23 +1,25 @@
 extends RayCast3D
 
 @onready var object: Node3D = null
-@onready var grab_point: Node3D = $grab_point
 
-func _try_grab_object():
+func _try_grab_object(is_left_hand: bool):
 	var next_object = get_collider()
 	if next_object is Node3D:
-		print(next_object)
-		object = next_object
+		Resources.pick_up(next_object, is_left_hand)
 
 func _move_grabbed_object(dt: float):
-	if object == null:
-		return
-	
-	object.global_position = grab_point.global_position
+	if Resources.leftHand != null:
+		Resources.leftHand.global_position = $grab_left.global_position
+	if Resources.rightHand != null:
+		Resources.rightHand.global_position = $grab_right.global_position
 
 func _physics_process(dt: float):
-	if Input.is_action_pressed("grab"):
-		_try_grab_object()
-		_move_grabbed_object(dt)
-	else:
-		object = null
+	if Input.is_action_pressed("left_hand_grab"):
+		_try_grab_object(true)
+	if Input.is_action_pressed("right_hand_grab"):
+		_try_grab_object(false)
+	if Input.is_key_pressed(KEY_Q):
+		Resources.drop(true)
+	if Input.is_key_pressed(KEY_E):
+		Resources.drop(false)
+	_move_grabbed_object(dt)

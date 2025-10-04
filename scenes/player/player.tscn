@@ -34,5 +34,8 @@ mesh = SubResource("BoxMesh_8afob")
 transform = Transform3D(1, 0, 0, 0, -0.0032972407, -0.99785405, 0, 2.8622787, -0.0011494915, 0.28517473, -0.24450481, -0.31017515)
 script = ExtResource("2_dovo2")
 
-[node name="grab_point" type="Node3D" parent="Camera3D/grab"]
-transform = Transform3D(1, 0, 0, 0, -0.0011519628, 0.99999934, 0, -0.99999934, -0.0011519628, -0.035930276, -1.1641827, -0.10833639)
+[node name="grab_left" type="Node3D" parent="Camera3D/grab"]
+transform = Transform3D(1, 0, 0, 0, -0.9999973, -0.0023039877, 0, 0.0023039877, -0.9999973, -1, -1, 0)
+
+[node name="grab_right" type="Node3D" parent="Camera3D/grab"]
+transform = Transform3D(1, 0, 0, 0, -0.0011519628, 0.9999994, 0, -0.9999993, -0.0011519627, 1, -1, 0)

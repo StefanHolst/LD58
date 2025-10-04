@@ -13,11 +13,7 @@ var move_speed: float = 0.1
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	#Engine.time_scale = 0.5
-
-func _process(delta: float) -> void:
-	# Move camera
-	moveCamera()
-	
+	Resources.item_dropped.connect(_place_item)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -25,8 +21,6 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_C:
 			$Camera3D.position.z -= move_speed
-		if event.keycode == KEY_E:
-			$Pap.enable()
 		if event.keycode == KEY_K:
 			var generator = WC.Generator.new(10, 10)
 
@@ -55,3 +49,6 @@ func moveCamera() -> void:
 		$Camera3D.position += up * move_speed
 	if Input.is_action_pressed("ui_c"):
 		$Camera3D.position -= up * move_speed
+
+func _place_item():
+	print("item dropped")
