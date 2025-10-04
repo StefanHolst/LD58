@@ -21,9 +21,6 @@ class Tile:
 		type = _type
 
 
-@onready var Center = get_node("Tiles/Center")
-
-
 class Generator:
 	var map = {} # all the tiles
 	var width = 10
