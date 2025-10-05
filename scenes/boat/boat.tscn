@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cbbcxcuyrt7gi"]
+[gd_scene load_steps=11 format=3 uid="uid://cbbcxcuyrt7gi"]
 
 [ext_resource type="Script" uid="uid://cwv8a83gesp85" path="res://scenes/boat/boat.gd" id="1_jw4ub"]
 [ext_resource type="PackedScene" uid="uid://bo2jocahh0vbj" path="res://assets/blender/boat.blend" id="2_ta61o"]
@@ -23,6 +23,9 @@ size = Vector3(4.5625, 1.103039, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dr53j"]
 size = Vector3(4.22876, 0.8063965, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ewwb0"]
+size = Vector3(1.0788574, 18.479248, 1.0293274)
 
 [node name="boat" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
 axis_lock_linear_y = true
@@ -78,3 +81,8 @@ shape = SubResource("BoxShape3D_o12wg")
 [node name="rail5" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.042625427, 2.5426025, 9.027971)
 shape = SubResource("BoxShape3D_dr53j")
+
+[node name="mast" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013549805, 8.739624, -0.057296753)
+shape = SubResource("BoxShape3D_ewwb0")
+debug_color = Color(0, 0.5950001, 0.7, 0.8509804)
