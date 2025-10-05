@@ -1,6 +1,7 @@
 extends Node
+class_name ResoucesHandler
 
-@export var papCounter: int = 0;
+@export var papCounter: int = 5;
 signal pap
 @export var leftHand: Node = null
 @export var rightHand: Node = null
@@ -13,6 +14,10 @@ var _inventory_item_parent: Node = null
 
 func add_pap(pieces: int):
 	papCounter += pieces
+	emit_signal("pap")
+
+func remove_pap(pieces: int):
+	papCounter -= pieces
 	emit_signal("pap")
 
 func pick_up(item: Node, is_left_hand: bool):

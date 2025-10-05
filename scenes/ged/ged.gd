@@ -11,6 +11,9 @@ extends RigidBody3D
 @onready var attack_target: Node3D = null
 @onready var attack_force_dir: Vector3 = Vector3(0, 0, 0)
 
+func _ready() -> void:
+	contact_monitor = true
+
 func _search_for_player() -> Node3D:
 	var d_max_sq = max_search_distance * max_search_distance
 	var players = get_tree().get_nodes_in_group("player")
@@ -50,5 +53,3 @@ func attack_player() -> void:
 	var n = attack_force_dir
 	var d = n.length()
 	apply_impulse(n * attack_force / d)
-	
-	

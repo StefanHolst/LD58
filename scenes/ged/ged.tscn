@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://v0atte22f85u"]
+[gd_scene load_steps=10 format=3 uid="uid://v0atte22f85u"]
 
 [ext_resource type="Script" uid="uid://cu5ivcyu5bfrk" path="res://scenes/ged/ged.gd" id="1_7chlf"]
 [ext_resource type="PackedScene" uid="uid://cew3c50eus2r7" path="res://assets/blender/goat.blend" id="2_7chlf"]
 [ext_resource type="PackedScene" uid="uid://dfjyo0xx4dw32" path="res://scenes/udrobs_tegn.tscn" id="3_ofia5"]
+[ext_resource type="Script" uid="uid://ce274cw5u16ia" path="res://scenes/hitbox.gd" id="4_5ovmw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7chlf"]
 size = Vector3(2.0930176, 1.8239746, 0.3633814)
@@ -39,6 +40,18 @@ tracks/1/keys = {
 "method": &"attack_player"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitBox:active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.5666666, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_5ovmw"]
 length = 0.001
@@ -54,6 +67,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitBox:active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5ovmw"]
 _data = {
@@ -61,7 +86,12 @@ _data = {
 &"attack": SubResource("Animation_ofia5")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ofia5"]
+size = Vector3(2.263794, 1.906311, 0.49176025)
+
 [node name="ged" type="RigidBody3D"]
+contact_monitor = true
+max_contacts_reported = 4
 script = ExtResource("1_7chlf")
 max_search_distance = 30.0
 attack_distance = 15.0
@@ -85,3 +115,12 @@ libraries = {
 [node name="UdrobsTegn" parent="." instance=ExtResource("3_ofia5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2806493, 1.764199, 0)
 visible = false
+
+[node name="HitBox" type="Area3D" parent="."]
+script = ExtResource("4_5ovmw")
+metadata/_custom_type_script = "uid://ce274cw5u16ia"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.057678223, 0.2930603, 0.0022888184)
+shape = SubResource("BoxShape3D_ofia5")
+debug_color = Color(0.8954452, 0.27894258, 0.40692508, 0.41960785)

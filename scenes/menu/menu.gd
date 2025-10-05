@@ -4,6 +4,7 @@ func _ready() -> void:
 	Resources.item_stored.connect(_on_item_stored)
 	Resources.item_unstored.connect(_on_item_unstored)
 	Resources.pap.connect(_on_update)
+	_on_update()
 
 func _on_item_stored():
 	var item = Resources.inventory_item as Node3D
