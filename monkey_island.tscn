@@ -15,3 +15,8 @@ visible = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
 transform = Transform3D(0.02778183, 1.1715552, -2.3263087, -0.29057282, 2.313313, 1.1615404, 2.5884013, 0.247117, 0.15536276, -7.244519, 2.624924, 7.069105)
 shape = SubResource("ConcavePolygonShape3D_pvyxe")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.546982, 6.466863, 2.3005195)
+light_color = Color(0.3593334, 0.88, 0.25520003, 1)
+light_energy = 10.0

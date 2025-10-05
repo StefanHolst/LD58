@@ -129,4 +129,4 @@ transform = Transform3D(0.43968838, 0, 0.8981504, 0, 1, 0, -0.8981504, 0, 0.4396
 script = ExtResource("13_ycdy4")
 
 [node name="monkey_island" parent="." instance=ExtResource("15_vivmo")]
-transform = Transform3D(-2.9968832, 0, -0.13671643, 0, 3, 0, 0.13671643, 0, -2.9968832, 0, -10.065784, 212.9072)
+transform = Transform3D(-2.9968832, 0, -0.13671643, 0, 3, 0, 0.13671643, 0, -2.9968832, 0, -10.065784, 271.4115)
