@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://deus3skfx84ny"]
+[gd_scene load_steps=9 format=3 uid="uid://deus3skfx84ny"]
 
 [ext_resource type="Script" uid="uid://bdh3v0su3lotm" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://i6rif24p1k4f" path="res://scenes/player/grab.gd" id="2_dovo2"]
+[ext_resource type="Script" uid="uid://b117ildraxtxf" path="res://scenes/player/ship_detector.gd" id="3_gmlin"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x7p2l"]
 
@@ -12,8 +13,12 @@ fog_enabled = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_8afob"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_dovo2"]
+size = Vector3(1, 0.38464355, 1)
+
 [node name="Node3D" type="CharacterBody3D" node_paths=PackedStringArray("camera") groups=["player"]]
 script = ExtResource("1_8afob")
+active = true
 gravity = Vector3(0, 1, 0)
 camera = NodePath("Camera3D")
 mouse_sensitivity = 0.00101
@@ -42,3 +47,10 @@ transform = Transform3D(1, 0, 0, 0, -0.9999973, -0.0023039877, 0, 0.0023039877, 
 
 [node name="grab_right" type="Node3D" parent="Camera3D/grab"]
 transform = Transform3D(1, 0, 0, 0, -0.0011519628, 0.9999994, 0, -0.9999993, -0.0011519627, 1, -1, 0)
+
+[node name="ship_detector" type="Area3D" parent="."]
+script = ExtResource("3_gmlin")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ship_detector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2226478, 0)
+shape = SubResource("BoxShape3D_dovo2")

@@ -35,7 +35,8 @@ func store(is_left_hand: bool):
 			leftHand = null
 			_inventory_item_parent = inventory_item.get_parent()
 			_inventory_item_parent.remove_child(inventory_item)
-			inventory_item.freeze = true
+			if inventory_item is RigidBody3D:
+				inventory_item.freeze = true
 			emit_signal("item_stored")
 	else:
 		if rightHand != null:
@@ -43,7 +44,8 @@ func store(is_left_hand: bool):
 			rightHand = null
 			_inventory_item_parent = inventory_item.get_parent()
 			_inventory_item_parent.remove_child(inventory_item)
-			inventory_item.freeze = true
+			if inventory_item is RigidBody3D:
+				inventory_item.freeze = true
 			emit_signal("item_stored")
 
 func drop(is_left_hand: bool):
@@ -66,7 +68,9 @@ func unstore(is_left_hand: bool):
 
 	emit_signal("item_unstored")
 	_inventory_item_parent.add_child(inventory_item)
-	inventory_item.freeze = false
+	if inventory_item is RigidBody3D:
+				inventory_item.freeze = true
+				
 	if is_left_hand:
 		leftHand = inventory_item
 	else:

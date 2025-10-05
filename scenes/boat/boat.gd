@@ -1,40 +1,33 @@
 extends CharacterBody3D
-class_name PlayerBody
+class_name Boat
 
 @export var active: bool = false:
-	set = set_active
-@export var gravity: Vector3 = Vector3(0, 0, 0)
+	set = set_activate
+
 @export var camera: Camera3D
 @export var speed: float = 3
-@export var jump_height: float = 2.0
-@export_range(0.00001, 0.01) var mouse_sensitivity: float = 0.01
-@onready var ray_cast_3d: RayCast3D = $Camera3D/RayCast3D
+@export_range(0.00001, 0.01) var mouse_sensitivity: float = 0.001 
 
 var camera_rotation_basis = Vector2(0, 0)
 
-func set_active(a: bool) -> void:
+func get_player() -> PlayerBody:
+	for c in get_children():
+		if c is PlayerBody:
+			return c
+	return null
+
+func set_activate(a: bool):
+	active = a
 	if camera != null:
 		camera.current = a
-	set_process(a)
-	set_physics_process(a)
-	set_process_input(a)
 	active = a
-	
 
-func _compute_jump_velocity() -> float:
-	var vy_sq = max(0, 2 * jump_height * -gravity.y)
-	return sqrt(vy_sq)
-
-func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	move_camera(Vector2(0, 0))
-	set_active(active)
+func _ready() -> void:
+	set_activate(active)
 
 func _physics_process(dt: float):
-	velocity += gravity * dt
-	
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		jump()
+	if not active:
+		return
 	
 	var fx: float = 0.0
 	if Input.is_action_pressed("move_forward"):
@@ -55,16 +48,19 @@ func _physics_process(dt: float):
 	
 	move_and_slide()
 	
-func jump():
-	velocity.y = _compute_jump_velocity()
+	if Input.is_action_just_pressed("ship_mode"):
+		var p = get_player()
+		if p != null:
+			active = false
+			p.active = true
+			p.reparent(get_tree().root)
 
 func _input(event: InputEvent):
-	if event is InputEventMouseMotion:
-		move_camera(event.relative * mouse_sensitivity)
+	if not active:
+		return
 
-func move_camera_old(movement: Vector2):
-	self.rotate_y(-movement.x * mouse_sensitivity)
-	camera.rotate_x(movement.y * mouse_sensitivity)     
+	if event is InputEventMouseMotion:
+		move_camera(event.relative * mouse_sensitivity)    
 
 func move_camera(movement: Vector2):
 	camera_rotation_basis += movement
@@ -75,3 +71,5 @@ func move_camera(movement: Vector2):
 	
 	rotate_object_local(Vector3(0, 1, 0), -camera_rotation_basis.x)
 	camera.rotate_object_local(Vector3(1, 0, 0), -camera_rotation_basis.y)
+
+	
