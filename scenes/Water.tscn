@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cabe835u6wdmy"]
+[gd_scene load_steps=10 format=3 uid="uid://cabe835u6wdmy"]
 
 [ext_resource type="Shader" uid="uid://bf1ckxu3pna32" path="res://assets/shaders/water.gdshader" id="1_h7np4"]
+[ext_resource type="Script" uid="uid://ce274cw5u16ia" path="res://scenes/hitbox.gd" id="2_vwe2q"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_h7np4"]
 
@@ -29,7 +30,21 @@ lightmap_size_hint = Vector2i(10002, 10002)
 material = SubResource("ShaderMaterial_vwe2q")
 size = Vector2(2000, 2000)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_45jge"]
+size = Vector3(2000, 1.619, 2000)
+
 [node name="Water" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_45jge")
+
+[node name="HitBox" type="Area3D" parent="."]
+script = ExtResource("2_vwe2q")
+damage = 9999
+active = true
+metadata/_custom_type_script = "uid://ce274cw5u16ia"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.80236816, 0)
+shape = SubResource("BoxShape3D_45jge")
+debug_color = Color(0.89, 0.26700002, 0.44351667, 0.8117647)
