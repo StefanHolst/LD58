@@ -13,6 +13,15 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotateCamera(event)
 	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_P: # Open store
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			mouse_capture_enabled = true
+			$Overlay/Store.visible = true
+		if event.keycode == KEY_ESCAPE:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			mouse_capture_enabled = true
+			$Overlay/Store.visible = false
+
 		if event.keycode == KEY_X:
 			if mouse_capture_enabled:
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

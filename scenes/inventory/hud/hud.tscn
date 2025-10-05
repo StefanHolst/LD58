@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://xg2n633dmlgi"]
 
-[ext_resource type="Script" uid="uid://bpn4srvk8koln" path="res://scenes/menu/menu.gd" id="1_klgdb"]
+[ext_resource type="Script" path="res://scenes/menu/menu.gd" id="1_klgdb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mcvr8"]
 font_size = 80
@@ -19,6 +19,7 @@ offset_right = 373.0
 offset_bottom = 397.0
 
 [node name="Label" type="Label" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Inventory"
 label_settings = SubResource("LabelSettings_mcvr8")
