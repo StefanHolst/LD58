@@ -2,7 +2,7 @@ extends RayCast3D
 
 func _try_grab_object(is_left_hand: bool):
 	var next_object = get_collider()
-	if next_object is Node3D:
+	if next_object is Node3D and next_object is not Boat:
 		Resources.pick_up(next_object, is_left_hand)
 	else:
 		Resources.unstore(is_left_hand)

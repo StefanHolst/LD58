@@ -9,6 +9,7 @@ size = Vector3(5, 1, 5)
 size = Vector3(5, 1, 5)
 
 [node name="boat" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
+axis_lock_linear_y = true
 floor_max_angle = 0.0017453292
 script = ExtResource("1_jw4ub")
 camera = NodePath("Camera3D")

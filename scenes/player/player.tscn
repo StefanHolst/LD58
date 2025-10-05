@@ -12,8 +12,6 @@
 [sub_resource type="Environment" id="Environment_dovo2"]
 fog_enabled = true
 
-[sub_resource type="BoxMesh" id="BoxMesh_8afob"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_dovo2"]
 size = Vector3(1, 0.38464355, 1)
 

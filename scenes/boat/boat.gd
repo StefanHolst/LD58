@@ -25,6 +25,7 @@ func set_activate(a: bool):
 func _ready() -> void:
 	set_activate(active)
 
+
 func _physics_process(dt: float):
 	if not active:
 		return

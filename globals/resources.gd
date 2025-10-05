@@ -53,12 +53,16 @@ func drop(is_left_hand: bool):
 		if leftHand == null:
 			return
 		dropped_item = leftHand
+		if dropped_item is Node3D:
+			dropped_item.basis = Basis()
 		leftHand = null
 		emit_signal("item_dropped")
 	else:
 		if rightHand == null:
 			return
 		dropped_item = rightHand
+		if dropped_item is Node3D:
+			dropped_item.basis = Basis()
 		rightHand = null
 		emit_signal("item_dropped")
 
@@ -67,9 +71,9 @@ func unstore(is_left_hand: bool):
 		return
 
 	emit_signal("item_unstored")
-	_inventory_item_parent.add_child(inventory_item)
+	get_tree().root.add_child(inventory_item)
 	if inventory_item is RigidBody3D:
-				inventory_item.freeze = true
+		inventory_item.freeze = false
 				
 	if is_left_hand:
 		leftHand = inventory_item

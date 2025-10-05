@@ -9,6 +9,7 @@ class_name PlayerBody
 @export var jump_height: float = 2.0
 @export_range(0.00001, 0.01) var mouse_sensitivity: float = 0.01
 @onready var ray_cast_3d: RayCast3D = $Camera3D/RayCast3D
+@onready var grab: RayCast3D = $Camera3D/grab
 
 var camera_rotation_basis = Vector2(0, 0)
 
@@ -18,6 +19,8 @@ func set_active(a: bool) -> void:
 	set_process(a)
 	set_physics_process(a)
 	set_process_input(a)
+	if grab:
+		grab.set_physics_process(a)
 	active = a
 	
 
