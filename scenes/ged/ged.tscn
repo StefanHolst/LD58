@@ -92,7 +92,7 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_ofia5"]
 size = Vector3(2.263794, 1.906311, 0.49176025)
 
-[node name="ged" type="RigidBody3D"]
+[node name="ged" type="RigidBody3D" groups=["enemy"]]
 contact_monitor = true
 max_contacts_reported = 4
 script = ExtResource("1_7chlf")

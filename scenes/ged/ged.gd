@@ -58,3 +58,6 @@ func reorient() -> void:
 	inertia = Vector3(0,0,0)
 	var p = attack_target.position
 	look_at(Vector3(p.x, position.y, p.z), Vector3(0,1,0), true)
+
+func on_hit():
+	queue_free()
