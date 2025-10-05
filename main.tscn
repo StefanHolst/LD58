@@ -96,7 +96,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2512884, 8.419209, 20.9911
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.006924, -3.892196, 38.71038)
 
 [node name="Water" parent="." instance=ExtResource("10_4c57u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.39093, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.576637, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -125,4 +125,4 @@ transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.3
 shape = SubResource("BoxShape3D_4c57u")
 
 [node name="boat" parent="." instance=ExtResource("11_efxa6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8604012, -13.236316, 54.24878)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8604012, -9.559592, 52.06769)

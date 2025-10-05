@@ -61,6 +61,10 @@ func jump():
 func _input(event: InputEvent):
 	if event is InputEventMouseMotion:
 		move_camera(event.relative * mouse_sensitivity)
+	if Input.is_action_pressed("left_hand"):
+		$Camera3D/Pistol.trigger()
+	if Input.is_action_just_released("left_hand"):
+		$Camera3D/Pistol.release()
 
 func move_camera_old(movement: Vector2):
 	self.rotate_y(-movement.x * mouse_sensitivity)
