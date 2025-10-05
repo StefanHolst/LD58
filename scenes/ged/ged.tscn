@@ -1,14 +1,67 @@
-[gd_scene load_steps=4 format=3 uid="uid://v0atte22f85u"]
+[gd_scene load_steps=8 format=3 uid="uid://v0atte22f85u"]
 
 [ext_resource type="Script" uid="uid://cu5ivcyu5bfrk" path="res://scenes/ged/ged.gd" id="1_7chlf"]
 [ext_resource type="PackedScene" uid="uid://cew3c50eus2r7" path="res://assets/blender/goat.blend" id="2_7chlf"]
+[ext_resource type="PackedScene" uid="uid://dfjyo0xx4dw32" path="res://scenes/udrobs_tegn.tscn" id="3_ofia5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7chlf"]
 size = Vector3(2.0930176, 1.8239746, 0.3633814)
 
+[sub_resource type="Animation" id="Animation_ofia5"]
+resource_name = "attack"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UdrobsTegn:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.5666666),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"attack_player"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5ovmw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UdrobsTegn:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ovmw"]
+_data = {
+&"RESET": SubResource("Animation_5ovmw"),
+&"attack": SubResource("Animation_ofia5")
+}
+
 [node name="ged" type="RigidBody3D"]
 script = ExtResource("1_7chlf")
 max_search_distance = 30.0
+attack_distance = 15.0
 
 [node name="blender" parent="." instance=ExtResource("2_7chlf")]
 
@@ -22,3 +75,10 @@ one_shot = true
 autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5ovmw")
+}
+
+[node name="UdrobsTegn" parent="." instance=ExtResource("3_ofia5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2806493, 1.764199, 0)
+visible = false
