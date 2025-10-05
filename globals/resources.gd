@@ -1,8 +1,24 @@
 extends Node
 class_name ResoucesHandler
 
+enum ItemType {
+	Pistol = 0,
+	Shotgun = 1,
+	Boat = 2
+}
+const ITEM_PRICE_PISTOL = 200
+const ITEM_PRICE_SHOTGUN = 1000
+const ITEM_PRICE_BOAT = 100
+
+
 @export var papCounter: int = 5;
 signal pap
+
+# Upgrades
+
+# Items
+var items : int # bitmask of Items enum
+
 @export var leftHand: Node = null
 @export var rightHand: Node = null
 signal item_dropped
@@ -80,3 +96,7 @@ func unstore(is_left_hand: bool):
 	else:
 		rightHand = inventory_item
 	inventory_item = null
+
+func bought_item(item: int):
+	items = 1 << item && items
+	emit_signal("pap")
