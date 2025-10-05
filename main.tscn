@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://wob35ulaccic" path="res://Pap.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://ctf6jkm2m6ksn" path="res://assets/blender/island.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://deus3skfx84ny" path="res://scenes/player/player.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" path="res://scenes/cylinder_island.tscn" id="4_272bh"]
+[ext_resource type="PackedScene" uid="uid://5wmiepei03d8" path="res://scenes/cylinder_island.tscn" id="4_272bh"]
 [ext_resource type="PackedScene" uid="uid://c264qgxmeykl4" path="res://assets/blender/papcat.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://xg2n633dmlgi" path="res://scenes/menu/menu.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://v0atte22f85u" path="res://scenes/ged/ged.tscn" id="8_5vw27"]
@@ -125,4 +125,4 @@ transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.3
 shape = SubResource("BoxShape3D_4c57u")
 
 [node name="boat" parent="." instance=ExtResource("11_efxa6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8604012, -9.559592, 50.553745)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8604012, -9.559592, 63.90151)
