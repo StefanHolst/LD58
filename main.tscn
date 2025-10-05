@@ -1,9 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://c6dd3yagmchk6"]
+[gd_scene load_steps=18 format=3 uid="uid://c6dd3yagmchk6"]
 
 [ext_resource type="Script" uid="uid://bxbhspteetyt8" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://wob35ulaccic" path="res://Pap.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://deus3skfx84ny" path="res://scenes/player/player.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" path="res://scenes/cylinder_island.tscn" id="4_272bh"]
+[ext_resource type="PackedScene" uid="uid://5wmiepei03d8" path="res://scenes/cylinder_island.tscn" id="4_272bh"]
 [ext_resource type="PackedScene" uid="uid://c264qgxmeykl4" path="res://assets/blender/papcat.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://xg2n633dmlgi" path="res://scenes/inventory/hud/hud.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://v0atte22f85u" path="res://scenes/ged/ged.tscn" id="8_5vw27"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cbbcxcuyrt7gi" path="res://scenes/boat/boat.tscn" id="11_efxa6"]
 [ext_resource type="PackedScene" uid="uid://c3slufbahiqnm" path="res://assets/blender/tree.blend" id="12_dg77c"]
 [ext_resource type="Script" path="res://scenes/bad_billboard.gd" id="13_ycdy4"]
+[ext_resource type="PackedScene" uid="uid://lxevycgsnj1y" path="res://scenes/tree/tree.tscn" id="14_w48qg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lquwl"]
 
@@ -131,12 +132,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8604012, -9.559592, 63.9015
 [node name="trees" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4031439, 0)
 
+[node name="tree3" parent="trees" instance=ExtResource("14_w48qg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.82453156, 22.375854)
+
 [node name="tree" parent="trees" instance=ExtResource("12_dg77c")]
 transform = Transform3D(0.6899228, 0, 0.7238829, 0, 1, 0, -0.7238829, 0, 0.6899228, -20.376177, 10.945653, 22.081118)
 script = ExtResource("13_ycdy4")
-
-[node name="tree3" parent="trees" instance=ExtResource("12_dg77c")]
-transform = Transform3D(-0.12647608, 0, -0.99196965, 0, 1, 0, 0.99196965, 0, -0.12647608, 4.0716667, -0.91915834, 22.081118)
 
 [node name="tree4" parent="trees" instance=ExtResource("12_dg77c")]
 transform = Transform3D(-0.7306034, 0, -0.6828021, 0, 1, 0, 0.6828021, 0, -0.7306034, -11.663174, -0.8102994, 22.081118)
