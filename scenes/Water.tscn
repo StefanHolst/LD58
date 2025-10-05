@@ -27,7 +27,7 @@ shader_parameter/noise2 = SubResource("NoiseTexture2D_euuk4")
 [sub_resource type="PlaneMesh" id="PlaneMesh_45jge"]
 lightmap_size_hint = Vector2i(10002, 10002)
 material = SubResource("ShaderMaterial_vwe2q")
-size = Vector2(200, 200)
+size = Vector2(2000, 2000)
 
 [node name="Water" type="Node3D"]
 
