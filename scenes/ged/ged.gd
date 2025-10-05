@@ -53,3 +53,8 @@ func attack_player() -> void:
 	var n = attack_force_dir
 	var d = n.length()
 	apply_impulse(n * attack_force / d)
+
+func reorient() -> void:
+	inertia = Vector3(0,0,0)
+	var p = attack_target.position
+	look_at(Vector3(p.x, position.y, p.z), Vector3(0,1,0), true)
