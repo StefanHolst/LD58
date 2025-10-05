@@ -1,14 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://c6dd3yagmchk6"]
+[gd_scene load_steps=13 format=3 uid="uid://c6dd3yagmchk6"]
 
 [ext_resource type="Script" uid="uid://bxbhspteetyt8" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://wob35ulaccic" path="res://Pap.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://ctf6jkm2m6ksn" path="res://assets/blender/island.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://deus3skfx84ny" path="res://scenes/player/player.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" path="res://scenes/cylinder_island.tscn" id="4_272bh"]
+[ext_resource type="PackedScene" uid="uid://5wmiepei03d8" path="res://scenes/cylinder_island.tscn" id="4_272bh"]
 [ext_resource type="PackedScene" uid="uid://c264qgxmeykl4" path="res://assets/blender/papcat.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://xg2n633dmlgi" path="res://scenes/menu/menu.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://v0atte22f85u" path="res://scenes/ged/ged.tscn" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://epgvlpeidksv" path="res://scenes/dropoff/dropoff.tscn" id="8_5vw28"]
+[ext_resource type="PackedScene" uid="uid://cabe835u6wdmy" path="res://scenes/Water.tscn" id="10_4c57u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lquwl"]
 
@@ -90,3 +91,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2512884, 8.419209, 20.9911
 
 [node name="Dropoff" parent="." instance=ExtResource("8_5vw28")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.006924, -3.892196, 38.71038)
+
+[node name="Water" parent="." instance=ExtResource("10_4c57u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.39093, 0)
