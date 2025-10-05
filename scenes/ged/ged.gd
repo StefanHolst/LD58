@@ -8,6 +8,7 @@ extends RigidBody3D
 @onready var timer: Timer = $Timer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+@onready var attack_target: Node3D = null
 @onready var attack_force_dir: Vector3 = Vector3(0, 0, 0)
 
 func _search_for_player() -> Node3D:
@@ -35,12 +36,16 @@ func _process(delta: float) -> void:
 	if d < attack_distance:
 		animation_player.play("attack")
 		attack_force_dir = n / d
+		attack_target = player
 		set_process(false)
 		await animation_player.animation_finished
 		set_process(true)
 	else:
 		apply_impulse(n * move_force / d)
-		
+
+func compute_attack_dir() -> void:
+	attack_force_dir = -attack_target.position.direction_to(position)
+
 func attack_player() -> void:
 	var n = attack_force_dir
 	var d = n.length()

@@ -29,9 +29,12 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(2.5666666),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(1.9666667, 2.5666666),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"compute_attack_dir"
+}, {
 "args": [],
 "method": &"attack_player"
 }]
