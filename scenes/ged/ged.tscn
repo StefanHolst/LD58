@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://v0atte22f85u"]
+
+[ext_resource type="PackedScene" uid="uid://cew3c50eus2r7" path="res://assets/blender/goat.blend" id="2_7chlf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7chlf"]
+size = Vector3(2.0930176, 1.8239746, 0.3633814)
+
+[node name="ged" type="RigidBody3D"]
+
+[node name="blender" parent="." instance=ExtResource("2_7chlf")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05871582, 0.29821777, 0.0015425682)
+shape = SubResource("BoxShape3D_7chlf")

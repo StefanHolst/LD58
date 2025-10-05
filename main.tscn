@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://c6dd3yagmchk6"]
+[gd_scene load_steps=11 format=3 uid="uid://c6dd3yagmchk6"]
 
 [ext_resource type="Script" uid="uid://bxbhspteetyt8" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://wob35ulaccic" path="res://Pap.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://ctf6jkm2m6ksn" path="res://assets/blender/island.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://deus3skfx84ny" path="res://scenes/player/player.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" path="res://scenes/cylinder_island.tscn" id="4_272bh"]
+[ext_resource type="PackedScene" uid="uid://5wmiepei03d8" path="res://scenes/cylinder_island.tscn" id="4_272bh"]
 [ext_resource type="PackedScene" uid="uid://c264qgxmeykl4" path="res://assets/blender/papcat.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://xg2n633dmlgi" path="res://scenes/menu/menu.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://v0atte22f85u" path="res://scenes/ged/ged.tscn" id="8_5vw27"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lquwl"]
 
@@ -15,8 +16,14 @@
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_ig7tw")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="sky" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.9296608, 0.36841655, 0, -0.36841655, -0.9296608, 0, 27.506788, 16.752277)
+light_color = Color(0.3660293, 0.4753452, 0.97886604, 1)
+light_energy = 0.5
+
+[node name="sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.63889414, 0.7638929, -0.09100571, -0.4302094, 0.45284775, 0.78092813, 0.63775724, -0.4597789, 0.6179556, -1.9083719, 30, 27.097626)
+light_color = Color(0.93380576, 0.9306131, 0.51845384, 1)
 shadow_enabled = true
 
 [node name="Pap" parent="." instance=ExtResource("2_0xm2m")]
@@ -76,3 +83,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.98641, -11.41741, -15.02670
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Menu" parent="CanvasLayer" instance=ExtResource("6_7mycd")]
+
+[node name="ged" parent="." instance=ExtResource("8_5vw27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2512884, 8.419209, 20.991156)
