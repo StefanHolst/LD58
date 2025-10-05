@@ -18,6 +18,7 @@ func add_pap(pieces: int):
 
 func remove_pap(pieces: int):
 	papCounter -= pieces
+	papCounter = max(0, papCounter)
 	emit_signal("pap")
 
 func pick_up(item: Node, is_left_hand: bool):
