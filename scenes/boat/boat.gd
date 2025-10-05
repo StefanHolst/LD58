@@ -10,6 +10,8 @@ class_name Boat
 
 var camera_rotation_basis = Vector2(0, 0)
 
+var boat_velocity: float = 0
+
 func get_player() -> PlayerBody:
 	for c in get_children():
 		if c is PlayerBody:
@@ -42,10 +44,12 @@ func _physics_process(dt: float):
 	if Input.is_action_pressed("move_left"):
 		rl -= 1.0
 	
-	var forward_basis = transform.basis.z * speed * fx
-	var rl_basis = transform.basis.x * speed * rl
-	velocity.x = forward_basis.x + rl_basis.x
-	velocity.z = forward_basis.z + rl_basis.z
+	var forward_velocity_change = speed * fx * dt
+
+	boat_velocity = clamp(boat_velocity, -velocity.length(), velocity.length())
+	boat_velocity = clamp(boat_velocity + forward_velocity_change, -speed, speed)
+	velocity = transform.basis.z * boat_velocity
+	rotation.y -= rl * dt
 	
 	move_and_slide()
 	
@@ -54,23 +58,5 @@ func _physics_process(dt: float):
 		if p != null:
 			active = false
 			p.active = true
+			p.global_rotation = global_rotation
 			p.reparent(get_tree().root)
-
-func _input(event: InputEvent):
-	if not active:
-		return
-
-	if event is InputEventMouseMotion:
-		move_camera(event.relative * mouse_sensitivity)    
-
-func move_camera(movement: Vector2):
-	camera_rotation_basis += movement
-	camera_rotation_basis.y = clamp(camera_rotation_basis.y, -1.5, 1.2)
-	
-	transform.basis = Basis()
-	camera.transform.basis = Basis()
-	
-	rotate_object_local(Vector3(0, 1, 0), -camera_rotation_basis.x)
-	camera.rotate_object_local(Vector3(1, 0, 0), -camera_rotation_basis.y)
-
-	
