@@ -58,5 +58,5 @@ func _physics_process(dt: float):
 		if p != null:
 			active = false
 			p.active = true
-			p.global_rotation = global_rotation
+			p.global_rotation.y = global_rotation.y
 			p.reparent(get_tree().root)

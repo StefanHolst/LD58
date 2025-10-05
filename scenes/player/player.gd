@@ -11,8 +11,6 @@ class_name PlayerBody
 @onready var ray_cast_3d: RayCast3D = $Camera3D/RayCast3D
 @onready var grab: RayCast3D = $Camera3D/grab
 
-var camera_rotation_basis = Vector2(0, 0)
-
 func set_active(a: bool) -> void:
 	if camera != null:
 		camera.current = a
@@ -74,6 +72,8 @@ func move_camera_old(movement: Vector2):
 	camera.rotate_x(movement.y * mouse_sensitivity)     
 
 func move_camera(movement: Vector2):
+	var camera_rotation_basis = Vector2(-rotation.y, -camera.rotation.x)
+
 	camera_rotation_basis += movement
 	camera_rotation_basis.y = clamp(camera_rotation_basis.y, -1.5, 1.2)
 	
