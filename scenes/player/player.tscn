@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bdh3v0su3lotm" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://i6rif24p1k4f" path="res://scenes/player/grab.gd" id="2_dovo2"]
+[ext_resource type="PackedScene" uid="uid://cyjl465s2j56k" path="res://scenes/guns/pistol/pistol.tscn" id="3_lvxji"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x7p2l"]
 
@@ -9,8 +10,6 @@
 
 [sub_resource type="Environment" id="Environment_dovo2"]
 fog_enabled = true
-
-[sub_resource type="BoxMesh" id="BoxMesh_8afob"]
 
 [node name="Node3D" type="CharacterBody3D" node_paths=PackedStringArray("camera") groups=["player"]]
 script = ExtResource("1_8afob")
@@ -29,9 +28,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9913285, -0.40127662)
 environment = SubResource("Environment_dovo2")
 current = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
-transform = Transform3D(0.1538769, 0, 0, 0, 0.25224686, 0, 0, 0, 1, 0.26030472, -0.23928154, -0.7265111)
-mesh = SubResource("BoxMesh_8afob")
+[node name="Pistol" parent="Camera3D" instance=ExtResource("3_lvxji")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34968102, -0.3497312, -0.84587455)
 
 [node name="grab" type="RayCast3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, -0.0032972407, -0.99785405, 0, 2.8622787, -0.0011494915, 0.28517473, -0.24450481, -0.31017515)

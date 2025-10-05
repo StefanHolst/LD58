@@ -14,12 +14,12 @@ func _move_grabbed_object(dt: float):
 		Resources.rightHand.global_position = $grab_right.global_position
 
 func _physics_process(dt: float):
-	if Input.is_action_just_pressed("left_hand_grab"):
+	if Input.is_action_just_pressed("left_hand"):
 		if Resources.leftHand == null:
 			_try_grab_object(true)
 		else:
 			Resources.drop(true)
-	if Input.is_action_just_pressed("right_hand_grab"):
+	if Input.is_action_just_pressed("right_hand"):
 		if Resources.rightHand == null:
 			_try_grab_object(false)
 		else:
