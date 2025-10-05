@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://xg2n633dmlgi"]
 
-[ext_resource type="Script" path="res://scenes/menu/menu.gd" id="1_klgdb"]
+[ext_resource type="Script" uid="uid://bpn4srvk8koln" path="res://scenes/inventory/hud/hud.gd" id="1_vxnji"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mcvr8"]
 font_size = 80
@@ -11,8 +11,8 @@ font_size = 36
 [sub_resource type="LabelSettings" id="LabelSettings_e0arn"]
 font_size = 36
 
-[node name="Menu" type="Node2D"]
-script = ExtResource("1_klgdb")
+[node name="Hud" type="Node2D"]
+script = ExtResource("1_vxnji")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_right = 373.0

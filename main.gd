@@ -29,7 +29,8 @@ func _input(event: InputEvent) -> void:
 			else:
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 				mouse_capture_enabled = true
-			
+		if event.keycode == KEY_0:
+			Resources.add_pap(1000)
 
 func rotateCamera(event: InputEvent) -> void:
 	rotation_y -= event.relative.x * mouse_sensitivity
