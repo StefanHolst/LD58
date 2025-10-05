@@ -1,9 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://c6dd3yagmchk6"]
+[gd_scene load_steps=18 format=3 uid="uid://c6dd3yagmchk6"]
 
 [ext_resource type="Script" uid="uid://bxbhspteetyt8" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://wob35ulaccic" path="res://Pap.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://deus3skfx84ny" path="res://scenes/player/player.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" path="res://scenes/cylinder_island.tscn" id="4_272bh"]
+[ext_resource type="PackedScene" uid="uid://5wmiepei03d8" path="res://scenes/cylinder_island.tscn" id="4_272bh"]
 [ext_resource type="PackedScene" uid="uid://c264qgxmeykl4" path="res://assets/blender/papcat.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://xg2n633dmlgi" path="res://scenes/inventory/hud/hud.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://v0atte22f85u" path="res://scenes/ged/ged.tscn" id="8_5vw27"]
@@ -12,7 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://cabe835u6wdmy" path="res://scenes/Water.tscn" id="10_4c57u"]
 [ext_resource type="PackedScene" uid="uid://cbbcxcuyrt7gi" path="res://scenes/boat/boat.tscn" id="11_efxa6"]
 [ext_resource type="PackedScene" uid="uid://c3slufbahiqnm" path="res://assets/blender/tree.blend" id="12_dg77c"]
-[ext_resource type="Script" path="res://scenes/bad_billboard.gd" id="13_ycdy4"]
+[ext_resource type="Script" uid="uid://djqtam2gv2nx2" path="res://scenes/bad_billboard.gd" id="13_ycdy4"]
+[ext_resource type="PackedScene" uid="uid://37wcumei7bs" path="res://monkey_island.tscn" id="14_w48qg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lquwl"]
 
@@ -44,7 +45,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 [node name="cylinder_island" parent="Ground" instance=ExtResource("4_272bh")]
 
 [node name="player" parent="." instance=ExtResource("3_h2yge")]
-transform = Transform3D(-0.9217617, 0, 0.38775688, 0, 1, 0, -0.38775688, 0, -0.9217617, -0.015426397, 3.6076055, 18.8251)
+transform = Transform3D(-0.9217617, 0, 0.38775688, 0, 1, 0, -0.38775688, 0, -0.9217617, -0.015426397, 1.1660614, 39.760895)
 gravity = Vector3(0, -50, 0)
 speed = 10.0
 jump_height = 10.0
@@ -105,26 +106,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.576637, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9870605, -28.633835, 3.6683197)
 shape = SubResource("BoxShape3D_4c57u")
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9870605, 155.67816, 3.6683197)
-shape = SubResource("BoxShape3D_4c57u")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -150.08047, 135.02028, 3.6683197)
-shape = SubResource("BoxShape3D_4c57u")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 148.12177, 135.02028, 3.6683197)
-shape = SubResource("BoxShape3D_4c57u")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, -3.2180634, 135.02028, 142.73726)
-shape = SubResource("BoxShape3D_4c57u")
-
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, -1.5034637, 135.02028, -128.7441)
-shape = SubResource("BoxShape3D_4c57u")
-
 [node name="boat" parent="." instance=ExtResource("11_efxa6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8604012, -9.559592, 63.90151)
 
@@ -145,3 +126,6 @@ script = ExtResource("13_ycdy4")
 [node name="tree2" parent="trees" instance=ExtResource("12_dg77c")]
 transform = Transform3D(0.43968838, 0, 0.8981504, 0, 1, 0, -0.8981504, 0, 0.43968838, -16.385365, 10.945653, 20.729757)
 script = ExtResource("13_ycdy4")
+
+[node name="monkey_island" parent="." instance=ExtResource("14_w48qg")]
+transform = Transform3D(-4.9017525, 0, -0.9863188, 0, 5, 0, 0.9863188, 0, -4.9017525, 9.207535, -9.950813, 259.83624)
