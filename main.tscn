@@ -1,8 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://c6dd3yagmchk6"]
+[gd_scene load_steps=16 format=3 uid="uid://c6dd3yagmchk6"]
 
 [ext_resource type="Script" uid="uid://bxbhspteetyt8" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://wob35ulaccic" path="res://Pap.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://ctf6jkm2m6ksn" path="res://assets/blender/island.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://deus3skfx84ny" path="res://scenes/player/player.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://5wmiepei03d8" path="res://scenes/cylinder_island.tscn" id="4_272bh"]
 [ext_resource type="PackedScene" uid="uid://c264qgxmeykl4" path="res://assets/blender/papcat.tscn" id="5_lquwl"]
@@ -40,10 +39,6 @@ visible = false
 
 [node name="Ground" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-
-[node name="island" parent="Ground" instance=ExtResource("3_1bvp3")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -14.391854, 0)
-visible = false
 
 [node name="cylinder_island" parent="Ground" instance=ExtResource("4_272bh")]
 
@@ -130,6 +125,7 @@ shape = SubResource("BoxShape3D_4c57u")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8604012, -9.559592, 63.90151)
 
 [node name="trees" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4031439, 0)
 
 [node name="tree" parent="trees" instance=ExtResource("12_dg77c")]
 transform = Transform3D(0.6899228, 0, 0.7238829, 0, 1, 0, -0.7238829, 0, 0.6899228, -20.376177, 10.945653, 22.081118)
