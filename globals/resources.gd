@@ -2,25 +2,29 @@ extends Node
 class_name ResoucesHandler
 
 enum ItemType {
-	Pistol = 0,
-	Shotgun = 1,
-	Boat = 2
+	Pistol = 1,
+	Shotgun = 2,
+	Boat = 4
 }
 const ITEM_PRICE_PISTOL = 200
 const ITEM_PRICE_SHOTGUN = 1000
 const ITEM_PRICE_BOAT = 100
 
+var enabled = true
 
 @export var papCounter: int = 5;
 signal pap
 
 # Upgrades
+var pistol_upgrades: int = 0
 
 # Items
-var items : int # bitmask of Items enum
+var items: int = 0# bitmask of Items enum
 
-@export var leftHand: Node = null
-@export var rightHand: Node = null
+# Inventory
+var leftHand: Node = null
+var rightHand: Node = null
+var player: Node = null
 signal item_dropped
 var dropped_item: Node = null
 signal item_stored
