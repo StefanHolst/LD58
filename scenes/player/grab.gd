@@ -19,8 +19,11 @@ func _physics_process(dt: float):
 			_try_grab_object(true)
 		else:
 			Resources.drop(true)
-	if Input.is_action_pressed("right_hand_grab"):
-		_try_grab_object(false)
+	if Input.is_action_just_pressed("right_hand_grab"):
+		if Resources.rightHand == null:
+			_try_grab_object(false)
+		else:
+			Resources.drop(false)
 	if Input.is_key_pressed(KEY_Q):
 		Resources.store(true)
 	if Input.is_key_pressed(KEY_E):
