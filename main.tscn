@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://wob35ulaccic" path="res://Pap.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://ctf6jkm2m6ksn" path="res://assets/blender/island.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://deus3skfx84ny" path="res://scenes/player/player.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://5wmiepei03d8" path="res://scenes/cylinder_island.tscn" id="4_272bh"]
+[ext_resource type="PackedScene" path="res://scenes/cylinder_island.tscn" id="4_272bh"]
 [ext_resource type="PackedScene" uid="uid://c264qgxmeykl4" path="res://assets/blender/papcat.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://xg2n633dmlgi" path="res://scenes/menu/menu.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://v0atte22f85u" path="res://scenes/ged/ged.tscn" id="8_5vw27"]
@@ -51,7 +51,7 @@ gravity = Vector3(0, -50, 0)
 speed = 10.0
 jump_height = 10.0
 
-[node name="box2" type="RigidBody3D" parent="."]
+[node name="box2" type="RigidBody3D" parent="." groups=["enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.650382, 37.90143)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="box2"]
@@ -61,7 +61,7 @@ shape = SubResource("BoxShape3D_lquwl")
 mesh = SubResource("BoxMesh_1bvp3")
 skeleton = NodePath("../../box2")
 
-[node name="box" type="RigidBody3D" parent="."]
+[node name="box" type="RigidBody3D" parent="." groups=["enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.961858, 1.325191, 39.25019)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="box"]
