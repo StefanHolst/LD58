@@ -9,7 +9,7 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_8afob"]
 
-[node name="Node3D" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
+[node name="Node3D" type="CharacterBody3D" node_paths=PackedStringArray("camera") groups=["player"]]
 script = ExtResource("1_8afob")
 gravity = Vector3(0, 1, 0)
 camera = NodePath("Camera3D")
