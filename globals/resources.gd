@@ -1,6 +1,7 @@
 extends Node
 
 @export var papCounter: int = 0;
+signal pap
 @export var leftHand: Node = null
 @export var rightHand: Node = null
 signal item_dropped
@@ -12,6 +13,7 @@ var _inventory_item_parent: Node = null
 
 func add_pap(pieces: int):
 	papCounter += pieces
+	emit_signal("pap")
 
 func pick_up(item: Node, is_left_hand: bool):
 	drop(is_left_hand)

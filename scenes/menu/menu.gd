@@ -3,11 +3,12 @@ extends Node2D
 func _ready() -> void:
 	Resources.item_stored.connect(_on_item_stored)
 	Resources.item_unstored.connect(_on_item_unstored)
+	Resources.pap.connect(_on_update)
 
 func _on_item_stored():
 	var item = Resources.inventory_item as Node3D
-	var camera = $HFlowContainer/SubViewportContainer/SubViewport/Camera3D
-	var node = $HFlowContainer/SubViewportContainer/SubViewport/Node
+	var camera = $VBoxContainer/SubViewportContainer/SubViewport/Camera3D
+	var node = $VBoxContainer/SubViewportContainer/SubViewport/Node
 	for child in node.get_children():
 		node.remove_child(child)
 	node.add_child(item)
@@ -20,6 +21,9 @@ func _on_item_stored():
 	item.rotation.z += 45
 
 func _on_item_unstored():
-	var node = $HFlowContainer/SubViewportContainer/SubViewport/Node
+	var node = $VBoxContainer/SubViewportContainer/SubViewport/Node
 	for child in node.get_children():
 		node.remove_child(child)
+
+func _on_update():
+	$VBoxContainer/HBoxContainer/PapCount.text = str(Resources.papCounter)
