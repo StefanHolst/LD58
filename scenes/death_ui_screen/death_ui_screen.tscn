@@ -7,9 +7,10 @@ font_size = 128
 
 [node name="death_ui_screen" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchor_right = 1.001
 anchor_bottom = 1.0
+offset_left = 3.0
+offset_right = 0.9998779
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ixion")
@@ -23,11 +24,14 @@ offset_bottom = 1225.0
 color = Color(1, 0.19, 0.19, 0.5529412)
 
 [node name="Label" type="Label" parent="."]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 417.0
 offset_top = 262.0
-offset_right = 1438.0
-offset_bottom = 934.0
+offset_right = -562.0
+offset_bottom = -266.0
 text = "You Died!
 "
 label_settings = SubResource("LabelSettings_s614y")
@@ -36,11 +40,14 @@ vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(1000, 0)
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 434.0
 offset_top = 679.0
-offset_right = 1434.0
-offset_bottom = 775.0
+offset_right = -566.0
+offset_bottom = -425.0
 
 [node name="restart_button" type="Button" parent="HBoxContainer"]
 layout_mode = 2
