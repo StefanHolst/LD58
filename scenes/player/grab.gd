@@ -18,6 +18,7 @@ func _try_grab_object(is_left_hand: bool):
 		parent = parent.get_parent()
 	
 	if grabale:
+		print(next_object)
 		Resources.pick_up(next_object, is_left_hand)
 
 func _move_grabbed_object(dt: float):

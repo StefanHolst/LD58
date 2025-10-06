@@ -92,7 +92,7 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_ofia5"]
 size = Vector3(2.263794, 1.906311, 0.49176025)
 
-[node name="ged" type="RigidBody3D" groups=["enemy"]]
+[node name="ged" type="RigidBody3D" groups=["enemy", "grabable"]]
 contact_monitor = true
 max_contacts_reported = 4
 script = ExtResource("1_7chlf")
@@ -120,7 +120,7 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2806493, 2.3780322, 0)
 visible = false
 
-[node name="HitBox" type="Area3D" parent="." groups=["grabable"]]
+[node name="HitBox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6138332, 0)
 script = ExtResource("4_5ovmw")
 
