@@ -7,14 +7,17 @@ func _try_grab_object(is_left_hand: bool):
 		Resources.unstore(is_left_hand)
 		return
 	
-	# Ignore the terrain
-	var parent = next_object.get_parent()
+	# check grabable
+	var grabale = false
+	var parent = next_object
+	(next_object as Node3D).get_groups()
 	while (parent):
-		if parent.is_in_group("terrain"):
-			return
+		if parent.is_in_group("grabable"):
+			grabale = true
+			break
 		parent = parent.get_parent()
 	
-	if next_object is Node3D and next_object is not Boat:
+	if grabale:
 		Resources.pick_up(next_object, is_left_hand)
 
 func _move_grabbed_object(dt: float):
