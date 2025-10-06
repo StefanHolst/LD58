@@ -1,7 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://c6dd3yagmchk6"]
 
 [ext_resource type="Script" uid="uid://bxbhspteetyt8" path="res://main.gd" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://wob35ulaccic" path="res://Pap.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://deus3skfx84ny" path="res://scenes/player/player.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://5wmiepei03d8" path="res://scenes/cylinder_island.tscn" id="4_272bh"]
 [ext_resource type="PackedScene" uid="uid://cyjl465s2j56k" path="res://scenes/guns/pistol/pistol.tscn" id="5_2cqfq"]
@@ -9,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://xg2n633dmlgi" path="res://scenes/inventory/hud/hud.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://q1o0ds2up5pi" path="res://scenes/death_ui_screen/death_ui_screen.tscn" id="8_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://v0atte22f85u" path="res://scenes/ged/ged.tscn" id="8_5vw27"]
-[ext_resource type="PackedScene" uid="uid://epgvlpeidksv" path="res://scenes/dropoff/dropoff.tscn" id="8_5vw28"]
 [ext_resource type="PackedScene" uid="uid://dyw8f4ecrmcy" path="res://scenes/inventory/store/store.tscn" id="8_dg77c"]
 [ext_resource type="PackedScene" uid="uid://cabe835u6wdmy" path="res://scenes/Water.tscn" id="10_4c57u"]
 [ext_resource type="PackedScene" uid="uid://d4mw6m883o5jm" path="res://scenes/win_ui_screen/win_ui_screen.tscn" id="10_074og"]
@@ -40,10 +38,6 @@ transform = Transform3D(0.63889414, 0.7638929, -0.09100571, -0.4302094, 0.452847
 light_color = Color(0.93380576, 0.9306131, 0.51845384, 1)
 shadow_enabled = true
 
-[node name="Pap" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(0.99521023, -0.097756594, 0, 0.097756594, 0.99521023, 0, 0, 0, 1, 0.27787733, 4.3884277, 0.445323)
-visible = false
-
 [node name="Ground" type="Node3D" parent="." groups=["terrain"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
@@ -55,7 +49,7 @@ gravity = Vector3(0, -50, 0)
 speed = 10.0
 jump_height = 10.0
 
-[node name="box2" type="RigidBody3D" parent="." groups=["enemy"]]
+[node name="box2" type="RigidBody3D" parent="." groups=["grabable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.650382, 37.90143)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="box2"]
@@ -65,7 +59,7 @@ shape = SubResource("BoxShape3D_lquwl")
 mesh = SubResource("BoxMesh_1bvp3")
 skeleton = NodePath("../../box2")
 
-[node name="box" type="RigidBody3D" parent="." groups=["enemy"]]
+[node name="box" type="RigidBody3D" parent="." groups=["grabable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.961858, 1.325191, 39.25019)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="box"]
@@ -80,16 +74,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32)
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 36)
 
-[node name="papcat2" parent="Node3D" instance=ExtResource("5_lquwl")]
+[node name="papcat2" parent="Node3D" groups=["grabable"] instance=ExtResource("5_lquwl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.034128, 0, 5.9163)
 
-[node name="papcat" parent="Node3D" instance=ExtResource("5_lquwl")]
+[node name="papcat" parent="Node3D" groups=["grabable"] instance=ExtResource("5_lquwl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.74821, 0, 8.402796)
 
-[node name="papcat3" parent="Node3D" instance=ExtResource("5_lquwl")]
+[node name="papcat3" parent="Node3D" groups=["grabable"] instance=ExtResource("5_lquwl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.119177, -7.52446, -15.871056)
 
-[node name="papcat4" parent="Node3D" instance=ExtResource("5_lquwl")]
+[node name="papcat4" parent="Node3D" groups=["grabable"] instance=ExtResource("5_lquwl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.98641, -11.41741, -15.026706)
 
 [node name="Overlay" type="CanvasLayer" parent="."]
@@ -116,9 +110,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3515263, 2.4380922, -8.6741
 
 [node name="ged3" parent="." instance=ExtResource("8_5vw27")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0205717, 8.419209, 20.991156)
-
-[node name="Dropoff" parent="." instance=ExtResource("8_5vw28")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.006924, -3.892196, 38.71038)
 
 [node name="Water" parent="." instance=ExtResource("10_4c57u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5636215, -9.576641, 0.43640137)

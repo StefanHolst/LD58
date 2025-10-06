@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://lxevycgsnj1y"]
+[gd_scene load_steps=4 format=3 uid="uid://lxevycgsnj1y"]
 
 [ext_resource type="PackedScene" uid="uid://c3slufbahiqnm" path="res://assets/blender/tree.blend" id="1_cuvwl"]
 [ext_resource type="Script" uid="uid://blrmvhoslcrjs" path="res://scenes/tree/tree.gd" id="2_2bbdv"]
 
-[node name="tree" instance=ExtResource("1_cuvwl")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_mbf7r"]
+size = Vector3(2.9248047, 2.7774353, 0.2822876)
+
+[node name="tree" groups=["grabable"] instance=ExtResource("1_cuvwl")]
 script = ExtResource("2_2bbdv")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." index="1" groups=["grabable"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.072753906, 1.6140046, -0.049468994)
+shape = SubResource("BoxShape3D_mbf7r")
