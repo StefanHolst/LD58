@@ -13,6 +13,7 @@ const ITEM_PRICE_BOAT = 100
 
 @export var papCounter: int = 5;
 signal pap
+signal damage_taken
 
 # Upgrades
 
@@ -36,6 +37,7 @@ func remove_pap(pieces: int):
 	papCounter -= pieces
 	papCounter = max(0, papCounter)
 	emit_signal("pap")
+	damage_taken.emit()
 
 func pick_up(item: Node, is_left_hand: bool):
 	drop(is_left_hand)

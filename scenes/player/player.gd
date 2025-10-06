@@ -4,7 +4,7 @@ class_name PlayerBody
 @export var active: bool = false:
 	set = set_active
 @export var gravity: Vector3 = Vector3(0, 0, 0)
-@export var camera: Camera3D
+@export var camera: PlayerCamera
 @export var speed: float = 3
 @export var jump_height: float = 2.0
 @export_range(0.00001, 0.01) var mouse_sensitivity: float = 0.01
@@ -26,10 +26,14 @@ func _compute_jump_velocity() -> float:
 	var vy_sq = max(0, 2 * jump_height * -gravity.y)
 	return sqrt(vy_sq)
 
+func on_damage_taken() -> void:
+	camera.shake()
+
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	move_camera(Vector2(0, 0))
 	set_active(active)
+	Resources.damage_taken.connect(on_damage_taken)
 
 func _physics_process(dt: float):
 	velocity += gravity * dt
