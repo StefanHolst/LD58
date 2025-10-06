@@ -1,0 +1,218 @@
+[gd_scene load_steps=6 format=3 uid="uid://83p7iicrlybt"]
+
+[ext_resource type="Script" uid="uid://cu1j677uckrkf" path="res://scenes/welcome_screen/welcome_screen.gd" id="1_ouxmh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1jx1j"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_ouxmh"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_t26rq"]
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_jt27g"]
+font_size = 24
+
+[node name="WelcomeScreen" type="CenterContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -300.0
+offset_right = 600.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ouxmh")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(2000, 1200)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -110.0
+offset_right = 600.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Cardboard
+Collector"
+label_settings = SubResource("LabelSettings_1jx1j")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Collect cardboard, load your ship,
+ and sail away!"
+label_settings = SubResource("LabelSettings_ouxmh")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Controls"
+label_settings = SubResource("LabelSettings_t26rq")
+horizontal_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Move:"
+label_settings = SubResource("LabelSettings_jt27g")
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "WASD"
+label_settings = SubResource("LabelSettings_jt27g")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Look around:"
+label_settings = SubResource("LabelSettings_jt27g")
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "Mouse"
+label_settings = SubResource("LabelSettings_jt27g")
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Pick up left:"
+label_settings = SubResource("LabelSettings_jt27g")
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "Left mouse button"
+label_settings = SubResource("LabelSettings_jt27g")
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Pick up right:"
+label_settings = SubResource("LabelSettings_jt27g")
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "Right mouse button"
+label_settings = SubResource("LabelSettings_jt27g")
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Store Item:"
+label_settings = SubResource("LabelSettings_jt27g")
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "Q"
+label_settings = SubResource("LabelSettings_jt27g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Drop Item:"
+label_settings = SubResource("LabelSettings_jt27g")
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "Same mouse button"
+label_settings = SubResource("LabelSettings_jt27g")
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Retrieve Stored Item:"
+label_settings = SubResource("LabelSettings_jt27g")
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "Empty hand + click mouse button"
+label_settings = SubResource("LabelSettings_jt27g")
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer8"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Sail Ship:"
+label_settings = SubResource("LabelSettings_jt27g")
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer/HBoxContainer8"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "E"
+label_settings = SubResource("LabelSettings_jt27g")
+
+[node name="HSeparator2" type="HSeparator" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 36
+text = "Let's Go !!"
+
+[node name="Button2" type="Button" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 36
+text = "Quit"
