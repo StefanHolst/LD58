@@ -10,7 +10,7 @@ func _ready() -> void:
 	Resources.pap.connect(Callable(self, "_update"))
 
 func _update():
-	fire_rate = 0.5
+	fire_rate = 1
 	if Resources.pistol_upgrades & 1 != 0:
 		fire_rate /= 2
 

@@ -22,8 +22,12 @@ const UPGRADE_PISTOL_FIRERATE_TEXT = "Fire Rate 60rpm -> 120rpm"
 const UPGRADE_PISTOL_FIRERATE_PRICE = 200
 const UPGRADE_PISTOL_DAMAGE_TEXT = "Damage 1p -> 2p"
 const UPGRADE_PISTOL_DAMAGE_PRICE = 200
-const UPGRADE_PISTOL_WATERREPELLENTCY_TEXT = "Water Repellentcy"
-const UPGRADE_PISTOL_WATERREPELLENTCY_PRICE = 2000
+const UPGRADE_SHOTGUN_PELLETS_TEXT = "More Pellets 5 -> 10"
+const UPGRADE_SHOTGUN_PELLETS_PRICE = 1000
+const UPGRADE_SHOTGUN_SPREAD_TEXT = "Spread 3deg -> 5deg"
+const UPGRADE_SHOTGUN_SPREAD_PRICE = 1000
+const UPGRADE_SHOTGUN_FIRERATE_TEXT = "Fire Rate 30rpm -> 120rom"
+const UPGRADE_SHOTGUN_FIRERATE_PRICE = 1000
 
 func _ready() -> void:
 	_upgrades_list()
@@ -44,17 +48,13 @@ func _upgrades_list():
 		Upgrades.add_item("Boat")
 
 func _upgrades_selected(index: int):
-	var upgrade = Upgrades.get_item_text(index)
-	print(upgrade)
-	# TODO: Open the upgrades for the upgrade
-	
-	# Clear items
-	for c in grid.get_children():
-		grid.remove_child(c)
+	var selected_text = Upgrades.get_item_text(index)
+	_clear_list_upgrades()
 
-	if index == 0: # pistol
+	if selected_text == "Pistol": # pistol
 		_list_pistol_upgrades()
-	elif index == 1: # shotgun
+	elif selected_text == "Shotgun": # shotgun
+		_list_shotgun_upgrades()
 		pass
 	elif index == 2: #  boat
 		pass
@@ -92,13 +92,19 @@ func _items_buy(index: int):
 
 	_upgrades_list()
 
-func _list_pistol_upgrades():
+func _clear_list_upgrades():
 	for c in grid.get_children():
 		grid.remove_child(c)
-	
+
+func _list_pistol_upgrades():
+	_clear_list_upgrades()
 	_add_row(UPGRADE_PISTOL_FIRERATE_TEXT, UPGRADE_PISTOL_FIRERATE_PRICE, Resources.pistol_upgrades & 1 != 0)
 	_add_row(UPGRADE_PISTOL_DAMAGE_TEXT, UPGRADE_PISTOL_DAMAGE_PRICE, Resources.pistol_upgrades & 2 != 0)
-	_add_row(UPGRADE_PISTOL_WATERREPELLENTCY_TEXT, UPGRADE_PISTOL_WATERREPELLENTCY_PRICE, Resources.pistol_upgrades & 4 != 0)
+func _list_shotgun_upgrades():
+	_clear_list_upgrades()
+	_add_row(UPGRADE_SHOTGUN_PELLETS_TEXT, UPGRADE_SHOTGUN_PELLETS_PRICE, Resources.shotgun_upgrades & 1 != 0)
+	_add_row(UPGRADE_SHOTGUN_SPREAD_TEXT, UPGRADE_SHOTGUN_SPREAD_PRICE, Resources.shotgun_upgrades & 2 != 0)
+	_add_row(UPGRADE_SHOTGUN_FIRERATE_TEXT, UPGRADE_SHOTGUN_FIRERATE_PRICE, Resources.shotgun_upgrades & 4 != 0)
 
 func _add_row(title: String, price: int, owned: bool):
 	var row = upgrade_row_scene.instantiate()
@@ -113,17 +119,19 @@ func _on_row_pressed(row):
 	if row.title == UPGRADE_PISTOL_FIRERATE_TEXT:
 		Resources.remove_pap(UPGRADE_PISTOL_FIRERATE_PRICE)
 		Resources.pistol_upgrades |= 1
-		pass
-	
 	if row.title == UPGRADE_PISTOL_DAMAGE_TEXT:
 		Resources.remove_pap(UPGRADE_PISTOL_DAMAGE_PRICE)
 		Resources.pistol_upgrades |= 2
-		pass
-		
-	if row.title == UPGRADE_PISTOL_WATERREPELLENTCY_TEXT:
-		Resources.remove_pap(UPGRADE_PISTOL_WATERREPELLENTCY_PRICE)
-		Resources.pistol_upgrades |= 4
-		pass
+
+	if row.title == UPGRADE_SHOTGUN_PELLETS_TEXT:
+		Resources.remove_pap(UPGRADE_SHOTGUN_PELLETS_PRICE)
+		Resources.shotgun_upgrades |= 1
+	if row.title == UPGRADE_SHOTGUN_SPREAD_TEXT:
+		Resources.remove_pap(UPGRADE_SHOTGUN_SPREAD_PRICE)
+		Resources.shotgun_upgrades |= 2
+	if row.title == UPGRADE_SHOTGUN_FIRERATE_TEXT:
+		Resources.remove_pap(UPGRADE_SHOTGUN_FIRERATE_PRICE)
+		Resources.shotgun_upgrades |= 4
 	
 	Resources.emit_signal("pap")
-	_list_pistol_upgrades()
+	_upgrades_selected(Upgrades.get_selected_items()[0])
