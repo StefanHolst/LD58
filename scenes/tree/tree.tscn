@@ -3,5 +3,5 @@
 [ext_resource type="PackedScene" uid="uid://c3slufbahiqnm" path="res://assets/blender/tree.blend" id="1_cuvwl"]
 [ext_resource type="Script" uid="uid://blrmvhoslcrjs" path="res://scenes/tree/tree.gd" id="2_2bbdv"]
 
-[node name="tree" instance=ExtResource("1_cuvwl")]
+[node name="tree" groups=["grabable"] instance=ExtResource("1_cuvwl")]
 script = ExtResource("2_2bbdv")

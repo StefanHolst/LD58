@@ -1,7 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://c6dd3yagmchk6"]
 
 [ext_resource type="Script" uid="uid://bxbhspteetyt8" path="res://main.gd" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://wob35ulaccic" path="res://Pap.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://deus3skfx84ny" path="res://scenes/player/player.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://5wmiepei03d8" path="res://scenes/cylinder_island.tscn" id="4_272bh"]
 [ext_resource type="PackedScene" uid="uid://cyjl465s2j56k" path="res://scenes/guns/pistol/pistol.tscn" id="5_2cqfq"]
@@ -9,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://xg2n633dmlgi" path="res://scenes/inventory/hud/hud.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://q1o0ds2up5pi" path="res://scenes/death_ui_screen/death_ui_screen.tscn" id="8_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://v0atte22f85u" path="res://scenes/ged/ged.tscn" id="8_5vw27"]
-[ext_resource type="PackedScene" uid="uid://epgvlpeidksv" path="res://scenes/dropoff/dropoff.tscn" id="8_5vw28"]
 [ext_resource type="PackedScene" uid="uid://dyw8f4ecrmcy" path="res://scenes/inventory/store/store.tscn" id="8_dg77c"]
 [ext_resource type="PackedScene" uid="uid://cabe835u6wdmy" path="res://scenes/Water.tscn" id="10_4c57u"]
 [ext_resource type="PackedScene" uid="uid://cbbcxcuyrt7gi" path="res://scenes/boat/boat.tscn" id="11_efxa6"]
@@ -37,10 +35,6 @@ light_energy = 0.5
 transform = Transform3D(0.63889414, 0.7638929, -0.09100571, -0.4302094, 0.45284775, 0.78092813, 0.63775724, -0.4597789, 0.6179556, -1.9083719, 30, 27.097626)
 light_color = Color(0.93380576, 0.9306131, 0.51845384, 1)
 shadow_enabled = true
-
-[node name="Pap" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(0.99521023, -0.097756594, 0, 0.097756594, 0.99521023, 0, 0, 0, 1, 0.27787733, 4.3884277, 0.445323)
-visible = false
 
 [node name="Ground" type="Node3D" parent="." groups=["terrain"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -111,9 +105,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3515263, 2.4380922, -8.6741
 
 [node name="ged3" parent="." instance=ExtResource("8_5vw27")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0205717, 8.419209, 20.991156)
-
-[node name="Dropoff" parent="." instance=ExtResource("8_5vw28")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.006924, -3.892196, 38.71038)
 
 [node name="Water" parent="." instance=ExtResource("10_4c57u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5636215, -9.576641, 0.43640137)

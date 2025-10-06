@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cbbcxcuyrt7gi"]
+[gd_scene load_steps=11 format=3 uid="uid://cbbcxcuyrt7gi"]
 
 [ext_resource type="Script" uid="uid://cwv8a83gesp85" path="res://scenes/boat/boat.gd" id="1_jw4ub"]
 [ext_resource type="PackedScene" uid="uid://bo2jocahh0vbj" path="res://assets/blender/boat.blend" id="2_ta61o"]
+[ext_resource type="PackedScene" uid="uid://epgvlpeidksv" path="res://scenes/dropoff/dropoff.tscn" id="3_myh2m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ml60"]
 size = Vector3(9.896973, 5.9455566, 22.727661)
@@ -85,3 +86,6 @@ shape = SubResource("BoxShape3D_dr53j")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5648804, 5.823974, 1.1907349)
 shape = SubResource("BoxShape3D_ewwb0")
 debug_color = Color(0, 0.5950001, 0.7, 0.8509804)
+
+[node name="Dropoff" parent="." instance=ExtResource("3_myh2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.276636, -8.171795)
