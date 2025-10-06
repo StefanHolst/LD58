@@ -8,7 +8,6 @@ class_name PlayerBody
 @export var speed: float = 3
 @export var jump_height: float = 2.0
 @export_range(0.00001, 0.01) var mouse_sensitivity: float = 0.01
-@onready var ray_cast_3d: RayCast3D = $Camera3D/RayCast3D
 @onready var grab: RayCast3D = $Camera3D/grab
 
 func set_active(a: bool) -> void:
@@ -75,13 +74,8 @@ func jump():
 func _input(event: InputEvent):
 	if Resources.enabled == false:
 		return
-	
 	if event is InputEventMouseMotion:
 		move_camera(event.relative * mouse_sensitivity)
-	if Input.is_action_pressed("left_hand"):
-		$Camera3D/Pistol.trigger()
-	if Input.is_action_just_released("left_hand"):
-		$Camera3D/Pistol.release()
 
 func move_camera_old(movement: Vector2):
 	self.rotate_y(-movement.x * mouse_sensitivity)

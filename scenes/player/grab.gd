@@ -2,16 +2,26 @@ extends RayCast3D
 
 func _try_grab_object(is_left_hand: bool):
 	var next_object = get_collider()
+
+	if (not next_object):
+		Resources.unstore(is_left_hand)
+		return
+	
+	# Ignore the terrain
+	var parent = next_object.get_parent()
+	while (parent):
+		if parent.is_in_group("terrain"):
+			return
+		parent = parent.get_parent()
+	
 	if next_object is Node3D and next_object is not Boat:
 		Resources.pick_up(next_object, is_left_hand)
-	else:
-		Resources.unstore(is_left_hand)
 
 func _move_grabbed_object(dt: float):
 	if Resources.leftHand != null:
-		Resources.leftHand.global_position = $grab_left.global_position
+		Resources.leftHand.global_transform = $grab_left.global_transform
 	if Resources.rightHand != null:
-		Resources.rightHand.global_position = $grab_right.global_position
+		Resources.rightHand.global_transform = $grab_right.global_transform
 
 func _physics_process(dt: float):
 	if Input.is_action_just_pressed("left_hand"):
