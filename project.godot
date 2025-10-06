@@ -33,7 +33,6 @@ project/assembly_name="New Game Project"
 grabable="Objects that can be grabbed"
 player=""
 enemy=""
-terrain=""
 
 [input]
 
