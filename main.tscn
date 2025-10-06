@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c6dd3yagmchk6"]
+[gd_scene load_steps=20 format=3 uid="uid://c6dd3yagmchk6"]
 
 [ext_resource type="Script" uid="uid://bxbhspteetyt8" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://wob35ulaccic" path="res://Pap.tscn" id="2_0xm2m"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://5wmiepei03d8" path="res://scenes/cylinder_island.tscn" id="4_272bh"]
 [ext_resource type="PackedScene" uid="uid://c264qgxmeykl4" path="res://assets/blender/papcat.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://xg2n633dmlgi" path="res://scenes/inventory/hud/hud.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://q1o0ds2up5pi" path="res://scenes/death_ui_screen/death_ui_screen.tscn" id="8_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://v0atte22f85u" path="res://scenes/ged/ged.tscn" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://epgvlpeidksv" path="res://scenes/dropoff/dropoff.tscn" id="8_5vw28"]
 [ext_resource type="PackedScene" uid="uid://dyw8f4ecrmcy" path="res://scenes/inventory/store/store.tscn" id="8_dg77c"]
@@ -91,6 +92,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.98641, -11.41741, -15.02670
 
 [node name="Store" parent="Overlay" instance=ExtResource("8_dg77c")]
 visible = false
+
+[node name="death_ui_screen" parent="Overlay" instance=ExtResource("8_2cqfq")]
 
 [node name="ged" parent="." instance=ExtResource("8_5vw27")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2512884, 8.419209, 20.991156)

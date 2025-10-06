@@ -20,7 +20,6 @@ func set_active(a: bool) -> void:
 	if grab:
 		grab.set_physics_process(a)
 	active = a
-	
 
 func _compute_jump_velocity() -> float:
 	var vy_sq = max(0, 2 * jump_height * -gravity.y)
@@ -29,12 +28,21 @@ func _compute_jump_velocity() -> float:
 func on_damage_taken() -> void:
 	camera.shake()
 
+func on_player_died() -> void:
+	# Very dirty copy paste
+	set_process(false)
+	set_physics_process(false)
+	set_process_input(false)
+	if grab:
+		grab.set_physics_process(false)
+
 func _ready():
 	Resources.player = self
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	move_camera(Vector2(0, 0))
 	set_active(active)
 	Resources.damage_taken.connect(on_damage_taken)
+	Resources.player_died.connect(on_player_died)
 
 func _physics_process(dt: float):
 	velocity += gravity * dt

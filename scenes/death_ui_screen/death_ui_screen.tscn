@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://q1o0ds2up5pi"]
+
+[ext_resource type="Script" uid="uid://dq7n3wwdf2y1r" path="res://scenes/death_ui_screen/death_ui_screen.gd" id="1_ixion"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s614y"]
+font_size = 128
+
+[node name="death_ui_screen" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ixion")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -86.0
+offset_top = -86.0
+offset_right = 2038.0
+offset_bottom = 1225.0
+color = Color(1, 0.19, 0.19, 0.5529412)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 417.0
+offset_top = 262.0
+offset_right = 1438.0
+offset_bottom = 934.0
+text = "You Died!
+"
+label_settings = SubResource("LabelSettings_s614y")
+horizontal_alignment = 1
+vertical_alignment = 1

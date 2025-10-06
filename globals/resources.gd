@@ -15,6 +15,7 @@ var enabled = true
 @export var papCounter: int = 5;
 signal pap
 signal damage_taken
+signal player_died
 
 # Upgrades
 var pistol_upgrades: int = 0
@@ -42,6 +43,8 @@ func remove_pap(pieces: int):
 	papCounter = max(0, papCounter)
 	emit_signal("pap")
 	damage_taken.emit()
+	if papCounter <= 0:
+		player_died.emit()
 
 func pick_up(item: Node, is_left_hand: bool):
 	drop(is_left_hand)
