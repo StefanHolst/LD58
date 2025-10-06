@@ -199,6 +199,22 @@ layout_mode = 2
 text = "E"
 label_settings = SubResource("LabelSettings_jt27g")
 
+[node name="HBoxContainer9" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer9"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Upgrades:"
+label_settings = SubResource("LabelSettings_jt27g")
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer/HBoxContainer9"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "P"
+label_settings = SubResource("LabelSettings_jt27g")
+
 [node name="HSeparator2" type="HSeparator" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
