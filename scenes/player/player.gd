@@ -30,6 +30,7 @@ func on_damage_taken() -> void:
 	camera.shake()
 
 func _ready():
+	Resources.player = self
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	move_camera(Vector2(0, 0))
 	set_active(active)
@@ -38,19 +39,19 @@ func _ready():
 func _physics_process(dt: float):
 	velocity += gravity * dt
 	
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Resources.enabled && Input.is_action_just_pressed("jump") and is_on_floor():
 		jump()
 	
 	var fx: float = 0.0
-	if Input.is_action_pressed("move_forward"):
+	if Resources.enabled && Input.is_action_pressed("move_forward"):
 		fx -= 1.0
-	if Input.is_action_pressed("move_backward"):
+	if Resources.enabled && Input.is_action_pressed("move_backward"):
 		fx += 1.0
 	
 	var rl: float = 0.0
-	if Input.is_action_pressed("move_right"):
+	if Resources.enabled && Input.is_action_pressed("move_right"):
 		rl += 1.0
-	if Input.is_action_pressed("move_left"):
+	if Resources.enabled && Input.is_action_pressed("move_left"):
 		rl -= 1.0
 	
 	var forward_basis = transform.basis.z * speed * fx
@@ -64,6 +65,9 @@ func jump():
 	velocity.y = _compute_jump_velocity()
 
 func _input(event: InputEvent):
+	if Resources.enabled == false:
+		return
+	
 	if event is InputEventMouseMotion:
 		move_camera(event.relative * mouse_sensitivity)
 	if Input.is_action_pressed("left_hand"):

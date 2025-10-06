@@ -17,10 +17,12 @@ func _input(event: InputEvent) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			mouse_capture_enabled = true
 			$Overlay/Store.visible = true
+			Resources.enabled = false
 		if event.keycode == KEY_ESCAPE:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			mouse_capture_enabled = true
 			$Overlay/Store.visible = false
+			Resources.enabled = true
 
 		if event.keycode == KEY_X:
 			if mouse_capture_enabled:
