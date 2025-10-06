@@ -1,5 +1,8 @@
 extends RayCast3D
 
+@export var grab_left: Node3D
+@export var grab_right: Node3D
+
 func _try_grab_object(is_left_hand: bool):
 	var next_object = get_collider()
 
@@ -21,11 +24,11 @@ func _try_grab_object(is_left_hand: bool):
 		print(next_object)
 		Resources.pick_up(next_object, is_left_hand)
 
-func _move_grabbed_object(dt: float):
+func _move_grabbed_object(_dt: float):
 	if Resources.leftHand != null:
-		Resources.leftHand.global_transform = $grab_left.global_transform
+		Resources.leftHand.global_transform = grab_left.global_transform
 	if Resources.rightHand != null:
-		Resources.rightHand.global_transform = $grab_right.global_transform
+		Resources.rightHand.global_transform = grab_right.global_transform
 
 func _physics_process(dt: float):
 	if Input.is_action_just_pressed("left_hand"):
