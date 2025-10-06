@@ -13,7 +13,7 @@ func compute_attack_vector() -> void:
 	if player == null:
 		attack_dir = Vector3(0, 0, 0)
 	
-	attack_dir = pop_spawn.position.direction_to(player.position)
+	attack_dir = pop_spawn.global_position.direction_to(player.global_position)
 
 func distance_to_player() -> float:
 	var player = find_player()
@@ -25,9 +25,9 @@ func distance_to_player() -> float:
 func fire_poop() -> void:
 	var poop = pop_scene.instantiate()
 	if poop is RigidBody3D:
+		poop.global_position = pop_spawn.global_position
 		poop.linear_velocity = attack_dir * poop_speed
 		poop.freeze = false
-		poop.global_position = pop_spawn.global_position
 	get_tree().root.get_child(1).add_child(poop)
 
 func find_player() -> Node3D:

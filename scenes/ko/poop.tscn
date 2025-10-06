@@ -12,7 +12,7 @@ size = Vector3(0.661, 0.462, 1)
 albedo_color = Color(1, 0.43300003, 0.37, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ktq7"]
-size = Vector3(0.736084, 0.58392334, 1)
+size = Vector3(0.677063, 0.50279236, 1.0236816)
 
 [node name="Poop" type="RigidBody3D" groups=["grabable"]]
 script = ExtResource("1_6ynmj")
@@ -37,7 +37,7 @@ active = true
 metadata/_custom_type_script = "uid://ce274cw5u16ia"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010375977, -0.045013428, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009246826, -0.05973053, 0.0015869141)
 shape = SubResource("BoxShape3D_1ktq7")
 debug_color = Color(0.56950426, 0.40810946, 0.96155065, 0.41960785)
 
