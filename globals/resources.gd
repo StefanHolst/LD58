@@ -3,16 +3,6 @@ class_name ResoucesHandler
 
 const INITIAL_PAP_COUNT = 5
 
-enum ItemType {
-	Pistol = 1,
-	Shotgun = 2,
-	Boat = 4
-}
-const ITEM_PRICE_PISTOL = 200
-const ITEM_PRICE_SHOTGUN = 1000
-const ITEM_PRICE_BOAT = 100
-
-
 signal pap
 signal damage_taken
 signal player_died
@@ -21,11 +11,10 @@ signal item_stored
 signal item_unstored
 signal game_was_won
 
-# Upgrades
 var pistol_upgrades: int = 0
+var shotgun_upgrades: int = 0
+var items_unlocked: int = 0 # bitmask of Items enum
 
-# Items
-var items: int = 0# bitmask of Items enum
 var papCounter: int = INITIAL_PAP_COUNT;
 var enabled = true
 
@@ -48,8 +37,9 @@ func reset() -> void:
 	inventory_item = null
 	_inventory_item_parent = null
 	papCounter = INITIAL_PAP_COUNT
-	items = 0
+	items_unlocked = 0
 	pistol_upgrades = 0
+	shotgun_upgrades = 0
 
 func restart_game() -> void:
 	reset()
@@ -129,5 +119,5 @@ func unstore(is_left_hand: bool):
 	inventory_item = null
 
 func bought_item(item: int):
-	items = 1 << item && items
+	items_unlocked &= 1 << item
 	emit_signal("pap")

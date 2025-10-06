@@ -3,12 +3,27 @@ extends Panel
 @export var pistol_scene: PackedScene
 @export var shotgun_scene: PackedScene
 #@export var boat_scene: PackedScene
-#var pistol_scene = preload("res://scenes/guns/pistol/pistol.tscn")
 
 var upgrade_row_scene = preload("res://scenes/inventory/store/upgrade_row.tscn")
 @onready var Upgrades = $VBoxContainer/HBoxContainer/Upgrades/Items
 @onready var grid = $VBoxContainer/HBoxContainer/Listings/VBoxContainer
 @onready var Items = $VBoxContainer/HBoxContainer/Items/Items
+
+enum ItemType {
+	Pistol = 1,
+	Shotgun = 2,
+	Boat = 4
+}
+const ITEM_PRICE_PISTOL = 200
+const ITEM_PRICE_SHOTGUN = 1000
+const ITEM_PRICE_BOAT = 100
+
+const UPGRADE_PISTOL_FIRERATE_TEXT = "Fire Rate 60rpm -> 120rpm"
+const UPGRADE_PISTOL_FIRERATE_PRICE = 200
+const UPGRADE_PISTOL_DAMAGE_TEXT = "Damage 1p -> 2p"
+const UPGRADE_PISTOL_DAMAGE_PRICE = 200
+const UPGRADE_PISTOL_WATERREPELLENTCY_TEXT = "Water Repellentcy"
+const UPGRADE_PISTOL_WATERREPELLENTCY_PRICE = 2000
 
 func _ready() -> void:
 	_upgrades_list()
@@ -21,11 +36,11 @@ func _upgrades_list():
 	Upgrades.clear()
 	
 	# fill in the upgrades menu
-	if Resources.items & Resources.ItemType.Pistol != 0:
+	if Resources.items_unlocked & ItemType.Pistol != 0:
 		Upgrades.add_item("Pistol")
-	if Resources.items & Resources.ItemType.Shotgun != 0:
+	if Resources.items_unlocked & ItemType.Shotgun != 0:
 		Upgrades.add_item("Shotgun")
-	if Resources.items & Resources.ItemType.Boat != 0:
+	if Resources.items_unlocked & ItemType.Boat != 0:
 		Upgrades.add_item("Boat")
 
 func _upgrades_selected(index: int):
@@ -45,44 +60,70 @@ func _upgrades_selected(index: int):
 		pass
 
 func _items_list():
-	$VBoxContainer/HBoxContainer/Items/Items.add_item("Pistol (" + str(Resources.ITEM_PRICE_PISTOL) + "p)")
-	$VBoxContainer/HBoxContainer/Items/Items.add_item("Shotgun (" + str(Resources.ITEM_PRICE_SHOTGUN) + "p)")
-	$VBoxContainer/HBoxContainer/Items/Items.add_item("Boat (" + str(Resources.ITEM_PRICE_BOAT) + "p)")
+	$VBoxContainer/HBoxContainer/Items/Items.add_item("Pistol (" + str(ITEM_PRICE_PISTOL) + "p)")
+	$VBoxContainer/HBoxContainer/Items/Items.add_item("Shotgun (" + str(ITEM_PRICE_SHOTGUN) + "p)")
+	$VBoxContainer/HBoxContainer/Items/Items.add_item("Boat (" + str(ITEM_PRICE_BOAT) + "p)")
 
 func _items_buy(index: int):
 	$VBoxContainer/HBoxContainer/Items/Items.deselect_all()
 	if index == 0:
-		if Resources.papCounter > Resources.ITEM_PRICE_PISTOL:
-			Resources.remove_pap(Resources.ITEM_PRICE_PISTOL)
-			Resources.items |= Resources.ItemType.Pistol
+		if Resources.papCounter > ITEM_PRICE_PISTOL:
+			Resources.remove_pap(ITEM_PRICE_PISTOL)
+			Resources.items_unlocked |= ItemType.Pistol
 			# Spawn the item
 			var pistol = pistol_scene.instantiate()
 			var forward = -Resources.player.global_transform.basis.z
 			pistol.global_position = Resources.player.global_position + forward * 3.0
 			get_tree().current_scene.add_child(pistol)
 	if index == 1:
-		if Resources.papCounter > Resources.ITEM_PRICE_SHOTGUN:
-			Resources.remove_pap(Resources.ITEM_PRICE_SHOTGUN)
-			Resources.items |= Resources.ItemType.Shotgun
+		if Resources.papCounter > ITEM_PRICE_SHOTGUN:
+			Resources.remove_pap(ITEM_PRICE_SHOTGUN)
+			Resources.items_unlocked |= ItemType.Shotgun
 			# spawn the shotgun
 			var shotgun = shotgun_scene.instantiate()
 			var forward = -Resources.player.global_transform.basis.z
 			shotgun.global_position = Resources.player.global_position + forward * 3.0
 			get_tree().current_scene.add_child(shotgun)
 	if index == 2:
-		if Resources.papCounter > Resources.ITEM_PRICE_BOAT:
-			Resources.remove_pap(Resources.ITEM_PRICE_BOAT)
-			Resources.items |= Resources.ItemType.Boat
+		if Resources.papCounter > ITEM_PRICE_BOAT:
+			Resources.remove_pap(ITEM_PRICE_BOAT)
+			Resources.items_unlocked |= ItemType.Boat
 			# TODO: spawn the boat
 
 	_upgrades_list()
 
 func _list_pistol_upgrades():
-	_add_row("Fire Rate 60rpm -> 120rpm", 200, Resources.pistol_upgrades & 1 != 0)
-	_add_row("Damage 1p -> 2p", 200, Resources.pistol_upgrades & 2 != 0)
-	_add_row("Water Repellentcy", 2000, Resources.pistol_upgrades & 4 != 0)
+	for c in grid.get_children():
+		grid.remove_child(c)
+	
+	_add_row(UPGRADE_PISTOL_FIRERATE_TEXT, UPGRADE_PISTOL_FIRERATE_PRICE, Resources.pistol_upgrades & 1 != 0)
+	_add_row(UPGRADE_PISTOL_DAMAGE_TEXT, UPGRADE_PISTOL_DAMAGE_PRICE, Resources.pistol_upgrades & 2 != 0)
+	_add_row(UPGRADE_PISTOL_WATERREPELLENTCY_TEXT, UPGRADE_PISTOL_WATERREPELLENTCY_PRICE, Resources.pistol_upgrades & 4 != 0)
 
 func _add_row(title: String, price: int, owned: bool):
 	var row = upgrade_row_scene.instantiate()
-	row.setup(title, price, owned)
+	row.title = title
+	row.price = price
+	row.owned = owned
+	row.enabled = Resources.papCounter > price
+	row.connect("row_pressed", Callable(self, "_on_row_pressed"))
 	grid.add_child(row)
+
+func _on_row_pressed(row):
+	if row.title == UPGRADE_PISTOL_FIRERATE_TEXT:
+		Resources.remove_pap(UPGRADE_PISTOL_FIRERATE_PRICE)
+		Resources.pistol_upgrades |= 1
+		pass
+	
+	if row.title == UPGRADE_PISTOL_DAMAGE_TEXT:
+		Resources.remove_pap(UPGRADE_PISTOL_DAMAGE_PRICE)
+		Resources.pistol_upgrades |= 2
+		pass
+		
+	if row.title == UPGRADE_PISTOL_WATERREPELLENTCY_TEXT:
+		Resources.remove_pap(UPGRADE_PISTOL_WATERREPELLENTCY_PRICE)
+		Resources.pistol_upgrades |= 4
+		pass
+	
+	Resources.emit_signal("pap")
+	_list_pistol_upgrades()
