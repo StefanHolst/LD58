@@ -98,6 +98,15 @@ visible = false
 [node name="ged" parent="." instance=ExtResource("8_5vw27")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2512884, 8.419209, 20.991156)
 
+[node name="ged2" parent="." instance=ExtResource("8_5vw27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1799135, 14.811637, 25.241076)
+
+[node name="ged4" parent="." instance=ExtResource("8_5vw27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3515263, 2.4380922, -8.674158)
+
+[node name="ged3" parent="." instance=ExtResource("8_5vw27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0205717, 8.419209, 20.991156)
+
 [node name="Dropoff" parent="." instance=ExtResource("8_5vw28")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.006924, -3.892196, 38.71038)
 

@@ -34,3 +34,19 @@ text = "You Died!
 label_settings = SubResource("LabelSettings_s614y")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+offset_left = 662.0
+offset_top = 681.0
+offset_right = 773.0
+offset_bottom = 721.0
+
+[node name="restart_button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="quit_button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Quit"
