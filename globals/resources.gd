@@ -1,6 +1,8 @@
 extends Node
 class_name ResoucesHandler
 
+const INITIAL_PAP_COUNT = 5
+
 enum ItemType {
 	Pistol = 1,
 	Shotgun = 2,
@@ -10,29 +12,44 @@ const ITEM_PRICE_PISTOL = 200
 const ITEM_PRICE_SHOTGUN = 1000
 const ITEM_PRICE_BOAT = 100
 
-var enabled = true
 
-@export var papCounter: int = 5;
 signal pap
 signal damage_taken
 signal player_died
+signal item_dropped
+signal item_stored
+signal item_unstored
 
 # Upgrades
 var pistol_upgrades: int = 0
 
 # Items
 var items: int = 0# bitmask of Items enum
+var papCounter: int = INITIAL_PAP_COUNT;
+var enabled = true
 
 # Inventory
 var leftHand: Node = null
 var rightHand: Node = null
 var player: Node = null
-signal item_dropped
 var dropped_item: Node = null
-signal item_stored
-signal item_unstored
 var inventory_item: Node = null
 var _inventory_item_parent: Node = null
+
+func reset() -> void:
+	leftHand = null
+	rightHand = null
+	player = null
+	dropped_item = null
+	inventory_item = null
+	_inventory_item_parent = null
+	papCounter = INITIAL_PAP_COUNT
+	items = 0
+	pistol_upgrades = 0
+
+func restart_game() -> void:
+	reset()
+	get_tree().reload_current_scene()
 
 func add_pap(pieces: int):
 	papCounter += pieces
