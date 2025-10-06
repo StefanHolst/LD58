@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://37wcumei7bs" path="res://monkey_island.tscn" id="15_vivmo"]
 [ext_resource type="PackedScene" uid="uid://ddnrvly6m6co5" path="res://scenes/papisland.tscn" id="17_yaehf"]
 [ext_resource type="PackedScene" uid="uid://mi3fgusatys0" path="res://scenes/ko/ko.tscn" id="18_074og"]
-[ext_resource type="PackedScene" uid="uid://dm8ppqbdyjyin" path="res://scenes/win_zone/win_zone.tscn" id="19_cegan"]
+[ext_resource type="PackedScene" uid="uid://bq3nnvl8due02" path="res://arena_island.tscn" id="20_82xsv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4c57u"]
 size = Vector3(314.5865, 12.189579, 300.36176)
@@ -37,7 +37,7 @@ light_color = Color(0.93380576, 0.9306131, 0.51845384, 1)
 shadow_enabled = true
 
 [node name="player" parent="." instance=ExtResource("3_h2yge")]
-transform = Transform3D(-0.9217617, 0, 0.38775688, 0, 1, 0, -0.38775688, 0, -0.9217617, -17.752184, 9.664864, 527.7343)
+transform = Transform3D(-0.9217617, 0, 0.38775688, 0, 1, 0, -0.38775688, 0, -0.9217617, -7.953306, 9.664864, 39.66753)
 gravity = Vector3(0, -50, 0)
 speed = 10.0
 jump_height = 10.0
@@ -117,8 +117,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.172877, 1.542594, 13.14046
 [node name="monkey_island" parent="Islands" instance=ExtResource("15_vivmo")]
 transform = Transform3D(-2.9968832, 0, -0.13671643, 0, 3, 0, 0.13671643, 0, -2.9968832, 0, -10.065784, 271.4115)
 
-[node name="WinZone" parent="Islands/monkey_island" instance=ExtResource("19_cegan")]
-transform = Transform3D(-0.332987, 0, 0.015190714, 0, 0.33333334, 0, -0.015190714, 0, -0.332987, 0.45370913, 8.850008, -1.9047241)
-
 [node name="papisland" parent="Islands" instance=ExtResource("17_yaehf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9026337, -4.8572693, 540.313)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.981255, -4.8572693, 577.78394)
+
+[node name="arena_island" parent="Islands" instance=ExtResource("20_82xsv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 222.90623, -11.044371, 826.2137)
