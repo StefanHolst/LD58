@@ -1,9 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://c6dd3yagmchk6"]
+[gd_scene load_steps=20 format=3 uid="uid://c6dd3yagmchk6"]
 
 [ext_resource type="Script" uid="uid://bxbhspteetyt8" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://bregitexpwreq" path="res://scenes/item_spawner/item_spawner.gd" id="3_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://deus3skfx84ny" path="res://scenes/player/player.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" path="res://scenes/cylinder_island.tscn" id="4_272bh"]
+[ext_resource type="PackedScene" uid="uid://5wmiepei03d8" path="res://scenes/cylinder_island.tscn" id="4_272bh"]
 [ext_resource type="PackedScene" uid="uid://cyjl465s2j56k" path="res://scenes/guns/pistol/pistol.tscn" id="5_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://c264qgxmeykl4" path="res://assets/blender/papcat.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://xg2n633dmlgi" path="res://scenes/inventory/hud/hud.tscn" id="6_7mycd"]
@@ -12,15 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://dyw8f4ecrmcy" path="res://scenes/inventory/store/store.tscn" id="8_dg77c"]
 [ext_resource type="PackedScene" uid="uid://cabe835u6wdmy" path="res://scenes/Water.tscn" id="10_4c57u"]
 [ext_resource type="PackedScene" uid="uid://d4mw6m883o5jm" path="res://scenes/win_ui_screen/win_ui_screen.tscn" id="10_074og"]
+[ext_resource type="Script" uid="uid://cpmce88km04vq" path="res://seafloor.gd" id="11_074og"]
 [ext_resource type="PackedScene" uid="uid://cbbcxcuyrt7gi" path="res://scenes/boat/boat.tscn" id="11_efxa6"]
 [ext_resource type="PackedScene" uid="uid://doads7dih65sc" path="res://scenes/tree/tree.tscn" id="14_w48qg"]
 [ext_resource type="PackedScene" uid="uid://37wcumei7bs" path="res://monkey_island.tscn" id="15_vivmo"]
 [ext_resource type="PackedScene" uid="uid://mi3fgusatys0" path="res://scenes/ko/ko.tscn" id="18_074og"]
 [ext_resource type="PackedScene" uid="uid://dm8ppqbdyjyin" path="res://scenes/win_zone/win_zone.tscn" id="19_cegan"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_lquwl"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_1bvp3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4c57u"]
 size = Vector3(314.5865, 12.189579, 300.36176)
@@ -38,42 +35,11 @@ transform = Transform3D(0.63889414, 0.7638929, -0.09100571, -0.4302094, 0.452847
 light_color = Color(0.93380576, 0.9306131, 0.51845384, 1)
 shadow_enabled = true
 
-[node name="Ground" type="Node3D" parent="." groups=["terrain"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-
-[node name="cylinder_island" parent="Ground" instance=ExtResource("4_272bh")]
-
-[node name="item_spawner" type="Node3D" parent="Ground" node_paths=PackedStringArray("SpawnArea")]
-script = ExtResource("3_2cqfq")
-Item = ExtResource("14_w48qg")
-SpawnArea = NodePath("../cylinder_island")
-Count = 40
-metadata/_custom_type_script = "uid://bregitexpwreq"
-
 [node name="player" parent="." instance=ExtResource("3_h2yge")]
 transform = Transform3D(-0.9217617, 0, 0.38775688, 0, 1, 0, -0.38775688, 0, -0.9217617, 9.054054, 9.664864, 30.93634)
 gravity = Vector3(0, -50, 0)
 speed = 10.0
 jump_height = 10.0
-
-[node name="box2" type="RigidBody3D" parent="." groups=["grabable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.650382, 37.90143)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="box2"]
-shape = SubResource("BoxShape3D_lquwl")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="box2"]
-mesh = SubResource("BoxMesh_1bvp3")
-skeleton = NodePath("../../box2")
-
-[node name="box" type="RigidBody3D" parent="." groups=["grabable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.961858, 1.325191, 39.25019)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="box"]
-shape = SubResource("BoxShape3D_lquwl")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="box"]
-mesh = SubResource("BoxMesh_1bvp3")
 
 [node name="Pistol" parent="." instance=ExtResource("5_2cqfq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32)
@@ -121,20 +87,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0205717, 8.419209, 20.9911
 [node name="Water" parent="." instance=ExtResource("10_4c57u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5636215, -10.3755245, 0.43640137)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="Seafloor" type="StaticBody3D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("11_074og")
+player = NodePath("../player")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Seafloor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9870605, -18.13687, 3.6683197)
 shape = SubResource("BoxShape3D_4c57u")
 
 [node name="boat" parent="." instance=ExtResource("11_efxa6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8604012, -9.445353, 63.90151)
 
-[node name="monkey_island" parent="." instance=ExtResource("15_vivmo")]
+[node name="Islands" type="Node3D" parent="."]
+
+[node name="cylinder_island" parent="Islands" instance=ExtResource("4_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="item_spawner" type="Node3D" parent="Islands/cylinder_island" node_paths=PackedStringArray("SpawnArea")]
+script = ExtResource("3_2cqfq")
+Item = ExtResource("14_w48qg")
+SpawnArea = NodePath("..")
+Count = 40
+metadata/_custom_type_script = "uid://bregitexpwreq"
+
+[node name="Ko" parent="Islands/cylinder_island" instance=ExtResource("18_074og")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.172877, 1.542594, 13.140463)
+
+[node name="monkey_island" parent="Islands" instance=ExtResource("15_vivmo")]
 transform = Transform3D(-2.9968832, 0, -0.13671643, 0, 3, 0, 0.13671643, 0, -2.9968832, 0, -10.065784, 271.4115)
 
-[node name="WinZone" parent="." instance=ExtResource("19_cegan")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0993061, 16.48424, 277.18176)
-
-[node name="Ko" parent="." instance=ExtResource("18_074og")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.172877, 1.042594, 13.140463)
+[node name="WinZone" parent="Islands/monkey_island" instance=ExtResource("19_cegan")]
+transform = Transform3D(-0.332987, 0, 0.015190714, 0, 0.33333334, 0, -0.015190714, 0, -0.332987, 0.45370913, 8.850008, -1.9047241)
