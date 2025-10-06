@@ -31,7 +31,6 @@ func aim(p: Vector3, dt: float) -> void:
 		var p2 = ray_cast_3d.get_collision_point()
 		var d2 = global_position.distance_to(p2)
 		mesh.scale = Vector3(1, d2 / d.length(), 1)
-		print(d.length(), " what the what ", global_position.distance_to(p2))
 		
 
 	#ray_cast_3d.scale = Vector3(1, 1, p.length())

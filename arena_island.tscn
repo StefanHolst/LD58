@@ -16,6 +16,7 @@ radius = 80.9
 
 [node name="arena_island" instance=ExtResource("1_47bcx")]
 script = ExtResource("2_v1w5y")
+sink_rate = 0.1
 
 [node name="Cylinder" parent="." index="0"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
