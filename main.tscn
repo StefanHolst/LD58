@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://d4mw6m883o5jm" path="res://scenes/win_ui_screen/win_ui_screen.tscn" id="10_074og"]
 [ext_resource type="PackedScene" uid="uid://cbbcxcuyrt7gi" path="res://scenes/boat/boat.tscn" id="11_efxa6"]
 [ext_resource type="PackedScene" uid="uid://doads7dih65sc" path="res://scenes/tree/tree.tscn" id="14_w48qg"]
-[ext_resource type="PackedScene" path="res://monkey_island.tscn" id="15_vivmo"]
+[ext_resource type="PackedScene" uid="uid://37wcumei7bs" path="res://monkey_island.tscn" id="15_vivmo"]
 [ext_resource type="PackedScene" uid="uid://mi3fgusatys0" path="res://scenes/ko/ko.tscn" id="18_074og"]
 [ext_resource type="PackedScene" uid="uid://dm8ppqbdyjyin" path="res://scenes/win_zone/win_zone.tscn" id="19_cegan"]
 
@@ -51,7 +51,7 @@ Count = 40
 metadata/_custom_type_script = "uid://bregitexpwreq"
 
 [node name="player" parent="." instance=ExtResource("3_h2yge")]
-transform = Transform3D(-0.9217617, 0, 0.38775688, 0, 1, 0, -0.38775688, 0, -0.9217617, -0.015426397, 1.1660614, 39.760895)
+transform = Transform3D(-0.9217617, 0, 0.38775688, 0, 1, 0, -0.38775688, 0, -0.9217617, 9.054054, 9.664864, 30.93634)
 gravity = Vector3(0, -50, 0)
 speed = 10.0
 jump_height = 10.0

@@ -20,7 +20,7 @@ func distance_to_player() -> float:
 	if player == null:
 		return INF
 	
-	return player.global_position.distance_to(position)
+	return player.global_position.distance_to(global_position)
 
 func fire_poop() -> void:
 	var poop = pop_scene.instantiate()
@@ -39,8 +39,10 @@ func find_player() -> Node3D:
 func look_at_player(dt: float) -> void:
 	var player = find_player()
 	if player != null:
-		var new_target = Basis.looking_at(player.position - (position + Vector3(0, 2, 0)), Vector3.UP, true)
-		basis = basis.slerp(new_target, 0.95 * dt)
+		var target_vector = player.global_position - (global_position)
+		var new_target = Basis.looking_at(target_vector, Vector3.UP, true)
+		var new_rotation = new_target.get_rotation_quaternion().get_euler() 
+		global_rotation = global_rotation.slerp(new_rotation, 0.95 * dt)
 
 func _process(dt: float) -> void:
 	look_at_player(dt)
