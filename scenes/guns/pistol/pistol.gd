@@ -14,7 +14,6 @@ func _update():
 	if Resources.pistol_upgrades & 1 != 0:
 		fire_rate /= 2
 
-
 func _input(event: InputEvent) -> void:
 	if (Resources.leftHand and Resources.leftHand.get_parent() == self) or (Resources.rightHand and Resources.rightHand.get_parent() == self):
 		if event is InputEventKey and event.keycode == KEY_F:

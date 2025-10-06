@@ -1,9 +1,9 @@
 extends Node3D
 
 func _ready() -> void:
-	Resources.item_dropped.connect(_on_item_dropped)
+	$Area3D.body_entered.connect(_on_body_entered)
 
-func _on_item_dropped():
-	if $Area3D.overlaps_body(Resources.dropped_item):
+func _on_body_entered(item: Node):
+	if item.is_in_group("grabable"):
 		Resources.add_pap(1)
 		Resources.dropped_item.queue_free()
