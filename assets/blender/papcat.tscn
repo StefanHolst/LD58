@@ -74,7 +74,7 @@ points = PackedVector3Array(0.72749394, -0.025771424, -1.6661073, 1.6039143, 0.1
 
 [node name="papcat" type="Node3D"]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["grabable"]]
 
 [node name="Plane_001" type="MeshInstance3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 1.5522771, 0)

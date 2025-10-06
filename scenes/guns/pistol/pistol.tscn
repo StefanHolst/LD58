@@ -7,11 +7,11 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_pcmvo"]
 size = Vector3(1.1440125, 2.2932434, 0.29859924)
 
-[node name="Pistol" type="Node3D" groups=["grabable"]]
+[node name="Pistol" type="Node3D"]
 script = ExtResource("1_i76hi")
 projectile_scene = ExtResource("2_pcmvo")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["grabable"]]
 
 [node name="pistol" parent="RigidBody3D" instance=ExtResource("3_j85b1")]
 transform = Transform3D(0.7, 0, 0, 0, 0.6584889, 0, 0, 0, 0.6446512, 0, 0.06707941, -0.7378733)

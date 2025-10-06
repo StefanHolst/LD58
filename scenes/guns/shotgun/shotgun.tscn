@@ -302,11 +302,11 @@ _data = {
 &"ArmatureAction": SubResource("Animation_hvy72")
 }
 
-[node name="Pistol" type="Node3D" groups=["grabable"]]
+[node name="Pistol" type="Node3D"]
 script = ExtResource("1_f5ctw")
 projectile_scene = ExtResource("2_avgk8")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["grabable"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(1.9106855e-15, 4.371139e-08, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, -4.371139e-08, 0.005455017, 0.02822876, 0.0536499)

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bxbhspteetyt8" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://bregitexpwreq" path="res://scenes/item_spawner/item_spawner.gd" id="3_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://deus3skfx84ny" path="res://scenes/player/player.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://5wmiepei03d8" path="res://scenes/cylinder_island.tscn" id="4_272bh"]
+[ext_resource type="PackedScene" path="res://scenes/cylinder_island.tscn" id="4_272bh"]
 [ext_resource type="PackedScene" uid="uid://cyjl465s2j56k" path="res://scenes/guns/pistol/pistol.tscn" id="5_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://c264qgxmeykl4" path="res://assets/blender/papcat.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://xg2n633dmlgi" path="res://scenes/inventory/hud/hud.tscn" id="6_7mycd"]
@@ -81,16 +81,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32)
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 36)
 
-[node name="papcat2" parent="Node3D" groups=["grabable"] instance=ExtResource("5_lquwl")]
+[node name="papcat2" parent="Node3D" instance=ExtResource("5_lquwl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.034128, 0, 5.9163)
 
-[node name="papcat" parent="Node3D" groups=["grabable"] instance=ExtResource("5_lquwl")]
+[node name="papcat" parent="Node3D" instance=ExtResource("5_lquwl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.74821, 0, 8.402796)
 
-[node name="papcat3" parent="Node3D" groups=["grabable"] instance=ExtResource("5_lquwl")]
+[node name="papcat3" parent="Node3D" instance=ExtResource("5_lquwl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.119177, -7.52446, -15.871056)
 
-[node name="papcat4" parent="Node3D" groups=["grabable"] instance=ExtResource("5_lquwl")]
+[node name="papcat4" parent="Node3D" instance=ExtResource("5_lquwl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.98641, -11.41741, -15.026706)
 
 [node name="Overlay" type="CanvasLayer" parent="."]

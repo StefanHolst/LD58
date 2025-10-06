@@ -10,17 +10,7 @@ func _try_grab_object(is_left_hand: bool):
 		Resources.unstore(is_left_hand)
 		return
 	
-	# check grabable
-	var grabale = false
-	var parent = next_object
-	(next_object as Node3D).get_groups()
-	while (parent):
-		if parent.is_in_group("grabable"):
-			grabale = true
-			break
-		parent = parent.get_parent()
-	
-	if grabale:
+	if next_object.is_in_group("grabable"):
 		print(next_object)
 		Resources.pick_up(next_object, is_left_hand)
 
