@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://xg2n633dmlgi"]
+[gd_scene load_steps=9 format=3 uid="uid://xg2n633dmlgi"]
 
 [ext_resource type="Script" uid="uid://bpn4srvk8koln" path="res://scenes/inventory/hud/hud.gd" id="1_vxnji"]
 
@@ -9,6 +9,18 @@ font_size = 80
 font_size = 36
 
 [sub_resource type="LabelSettings" id="LabelSettings_e0arn"]
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_vxnji"]
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_q3qlq"]
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_ul5re"]
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_5dwww"]
 font_size = 36
 
 [node name="Hud" type="Node2D"]
@@ -36,6 +48,29 @@ label_settings = SubResource("LabelSettings_klgdb")
 layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_e0arn")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Trophy: "
+label_settings = SubResource("LabelSettings_vxnji")
+
+[node name="current_trophy" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_q3qlq")
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "/"
+label_settings = SubResource("LabelSettings_ul5re")
+
+[node name="max_trophy" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_5dwww")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="VBoxContainer"]
 layout_mode = 2

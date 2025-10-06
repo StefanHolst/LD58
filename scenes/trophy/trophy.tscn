@@ -6,7 +6,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_u1uu2"]
 size = Vector3(1.3457642, 2.6004639, 1)
 
-[node name="trophy" type="RigidBody3D" groups=["grabable"]]
+[node name="trophy" type="RigidBody3D" groups=["grabable", "trophy"]]
 script = ExtResource("1_38sld")
 
 [node name="trophy_blend" parent="." instance=ExtResource("1_u1uu2")]

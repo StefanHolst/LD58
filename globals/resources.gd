@@ -2,6 +2,7 @@ extends Node
 class_name ResoucesHandler
 
 const INITIAL_PAP_COUNT = 20
+const TROPHY_TO_WIN = 4
 
 signal pap
 signal damage_taken
@@ -10,6 +11,7 @@ signal item_dropped
 signal item_stored
 signal item_unstored
 signal game_was_won
+signal trophy_get
 
 var pistol_upgrades: int = 0
 var shotgun_upgrades: int = 0
@@ -25,6 +27,13 @@ var player: Node = null
 var dropped_item: Node = null
 var inventory_item: Node = null
 var _inventory_item_parent: Node = null
+var current_trophies: int = 0
+
+func get_current_trophies() -> int:
+	return current_trophies
+
+func get_max_trophies() -> int:
+	return TROPHY_TO_WIN
 
 func win_game() -> void:
 	game_was_won.emit()
@@ -40,6 +49,7 @@ func reset() -> void:
 	items_unlocked = 0
 	pistol_upgrades = 0
 	shotgun_upgrades = 0
+	current_trophies = 0
 
 func restart_game() -> void:
 	reset()
@@ -48,6 +58,12 @@ func restart_game() -> void:
 func add_pap(pieces: int):
 	papCounter += pieces
 	emit_signal("pap")
+
+func increase_trophy() -> void:
+	current_trophies += 1
+	trophy_get.emit()
+	if current_trophies >= TROPHY_TO_WIN:
+		win_game()
 
 func remove_pap(pieces: int):
 	papCounter -= pieces

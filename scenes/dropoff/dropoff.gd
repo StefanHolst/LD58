@@ -9,7 +9,12 @@ func _on_body_entered(item: Node):
 			Resources.add_pap(item.get_value())
 		else:
 			Resources.add_pap(1)
+		if item.is_in_group("trophy"):
+			Resources.increase_trophy()
+		
 		item.queue_free()
+	
+	
 	
 	#var grabable = false
 	#var parent = item
