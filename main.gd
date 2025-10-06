@@ -4,7 +4,7 @@ var mouse_capture_enabled = false
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_P: # Open storedw aw
+		if event.keycode == KEY_P: # Open store
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			mouse_capture_enabled = true
 			$Overlay/Store.visible = true
