@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=3 uid="uid://mi3fgusatys0"]
+
+[ext_resource type="Script" uid="uid://djn0fev4ibk4g" path="res://scenes/ko/ko.gd" id="1_87e2d"]
+[ext_resource type="PackedScene" uid="uid://bpehn34mlgb52" path="res://assets/blender/poop_ko.blend" id="1_dlv4o"]
+[ext_resource type="PackedScene" uid="uid://diywwli2heka4" path="res://scenes/ko/poop.tscn" id="2_d2k62"]
+[ext_resource type="PackedScene" uid="uid://dfjyo0xx4dw32" path="res://scenes/udrobs_tegn.tscn" id="2_hn0d1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hn0d1"]
+size = Vector3(5.817322, 4.1938477, 0.5602417)
+
+[sub_resource type="Animation" id="Animation_d2k62"]
+resource_name = "fire"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UdrobsTegn:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.06666667, 1.9666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2, 2.5333333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"compute_attack_vector"
+}, {
+"args": [],
+"method": &"fire_poop"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_wo87m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UdrobsTegn:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vumug"]
+_data = {
+&"RESET": SubResource("Animation_wo87m"),
+&"fire": SubResource("Animation_d2k62")
+}
+
+[node name="Ko" type="RigidBody3D" groups=["grabable"]]
+axis_lock_linear_x = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+script = ExtResource("1_87e2d")
+pop_scene = ExtResource("2_d2k62")
+
+[node name="poop_ko" parent="." instance=ExtResource("1_dlv4o")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="UdrobsTegn" parent="." instance=ExtResource("2_hn0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7425895, 3.6294987, 0)
+visible = false
+
+[node name="Pop_spawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8097593, 3.2602117, 1.266284)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3531189, 2.0563965, -0.11050415)
+shape = SubResource("BoxShape3D_hn0d1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vumug")
+}
