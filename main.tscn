@@ -107,6 +107,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8604012, -9.445353, 63.9015
 
 [node name="cylinder_island" parent="Islands" instance=ExtResource("4_272bh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+sink_rate = 0.05
 
 [node name="item_spawner" type="Node3D" parent="Islands/cylinder_island" node_paths=PackedStringArray("SpawnArea")]
 script = ExtResource("3_2cqfq")
