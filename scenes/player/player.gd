@@ -42,6 +42,7 @@ func _ready():
 	set_active(active)
 	Resources.damage_taken.connect(on_damage_taken)
 	Resources.player_died.connect(on_player_died)
+	Resources.game_was_won.connect(on_player_died)
 
 func _physics_process(dt: float):
 	velocity += gravity * dt

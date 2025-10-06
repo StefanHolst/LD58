@@ -19,6 +19,7 @@ signal player_died
 signal item_dropped
 signal item_stored
 signal item_unstored
+signal game_was_won
 
 # Upgrades
 var pistol_upgrades: int = 0
@@ -35,6 +36,9 @@ var player: Node = null
 var dropped_item: Node = null
 var inventory_item: Node = null
 var _inventory_item_parent: Node = null
+
+func win_game() -> void:
+	game_was_won.emit()
 
 func reset() -> void:
 	leftHand = null

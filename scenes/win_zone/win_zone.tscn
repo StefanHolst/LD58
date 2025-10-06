@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dm8ppqbdyjyin"]
+
+[ext_resource type="Script" uid="uid://cb8p442ku2dic" path="res://scenes/win_zone/win_area_3d.gd" id="1_fj6cf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eiwtm"]
+transparency = 1
+albedo_color = Color(0.92183334, 1, 0.32999998, 0.5686275)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_numg8"]
+material = SubResource("StandardMaterial3D_eiwtm")
+height = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_at1fg"]
+height = 1.0063477
+radius = 0.49609375
+
+[node name="WinZone" type="Node3D"]
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+script = ExtResource("1_fj6cf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.006653309, 0.4989683, 0)
+mesh = SubResource("CylinderMesh_numg8")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49682617, 0)
+shape = SubResource("CylinderShape3D_at1fg")
+debug_color = Color(0.82, 0.74442333, 0.17219998, 0.41960785)
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
