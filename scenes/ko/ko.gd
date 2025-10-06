@@ -48,5 +48,6 @@ func _process(dt: float) -> void:
 	look_at_player(dt)
 	if distance_to_player() <= attack_distance and not animation_player.is_playing():
 		animation_player.play("fire")
-		
-	
+
+func get_value() -> int:
+	return 500

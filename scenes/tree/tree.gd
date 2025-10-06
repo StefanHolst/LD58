@@ -12,3 +12,6 @@ func _physics_process(dt: float) -> void:
 	if player != null:
 		var new_target = Basis.looking_at(player.position - (position + Vector3(0, 2, 0)), Vector3.UP, true)
 		basis = basis.slerp(new_target, 0.95 * dt)
+
+func get_value() -> int:
+	return 10

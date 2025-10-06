@@ -61,3 +61,6 @@ func reorient() -> void:
 
 func on_hit():
 	queue_free()
+
+func get_value() -> int:
+	return 200
