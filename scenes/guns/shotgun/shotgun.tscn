@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=4 uid="uid://dw8imrjktpr8"]
+[gd_scene load_steps=22 format=4 uid="uid://dw8imrjktpr8"]
 
 [ext_resource type="Script" uid="uid://banyw72ocy7wu" path="res://scenes/guns/shotgun/shotgun.gd" id="1_f5ctw"]
 [ext_resource type="PackedScene" uid="uid://b41vfpr8dinmj" path="res://scenes/projectile/projectile.tscn" id="2_avgk8"]
+[ext_resource type="PackedScene" uid="uid://d2etqs7reqv3o" path="res://assets/blender/shotgun.blend" id="3_kog4j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pcmvo"]
 size = Vector3(0.5507202, 3.5928955, 0.29859924)
@@ -311,8 +312,12 @@ projectile_scene = ExtResource("2_avgk8")
 transform = Transform3D(1.9106855e-15, 4.371139e-08, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, -4.371139e-08, 0.005455017, 0.02822876, 0.0536499)
 shape = SubResource("BoxShape3D_pcmvo")
 
+[node name="shotgun2" parent="RigidBody3D" instance=ExtResource("3_kog4j")]
+transform = Transform3D(-1.7484556e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.7484556e-08, 0, 0, 0)
+
 [node name="shotgun" type="Node3D" parent="RigidBody3D"]
 transform = Transform3D(-1.7484556e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.7484556e-08, 0, 0, 0)
+visible = false
 
 [node name="Cube" type="MeshInstance3D" parent="RigidBody3D/shotgun"]
 transform = Transform3D(1.5935919, 0, 0, 0, 0.52995574, 0, 0, 0, 0.3485915, 2.4292386, 0.10629787, 7.1054274e-15)
