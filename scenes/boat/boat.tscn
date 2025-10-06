@@ -1,14 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cbbcxcuyrt7gi"]
+[gd_scene load_steps=10 format=3 uid="uid://cbbcxcuyrt7gi"]
 
 [ext_resource type="Script" uid="uid://cwv8a83gesp85" path="res://scenes/boat/boat.gd" id="1_jw4ub"]
 [ext_resource type="PackedScene" uid="uid://bo2jocahh0vbj" path="res://assets/blender/boat.blend" id="2_ta61o"]
 [ext_resource type="PackedScene" uid="uid://epgvlpeidksv" path="res://scenes/dropoff/dropoff.tscn" id="3_myh2m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ml60"]
-size = Vector3(9.896973, 5.9455566, 22.727661)
-
-[sub_resource type="BoxMesh" id="BoxMesh_jw4ub"]
-size = Vector3(5, 1, 5)
+size = Vector3(9.896973, 2.4949036, 22.727661)
 
 [sub_resource type="Environment" id="Environment_ta61o"]
 fog_enabled = true
@@ -23,7 +20,7 @@ size = Vector3(4.5625, 1.103039, 1)
 size = Vector3(4.22876, 0.8063965, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ewwb0"]
-size = Vector3(1.0788574, 18.479248, 1.0293274)
+size = Vector3(1.0788574, 17.908081, 1.0293274)
 
 [node name="boat" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
 axis_lock_linear_y = true
@@ -36,13 +33,9 @@ speed = 30.0
 transform = Transform3D(-3, 0, -4.5298742e-07, 0, 3, 0, 4.5298742e-07, 0, -3, 0, -0.5272933, 0)
 
 [node name="body_collider" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.030517578, -0.56121826, -1.8200269)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.030517578, 1.1641083, -1.8200269)
 shape = SubResource("BoxShape3D_1ml60")
 debug_color = Color(0, 0.5950001, 0.7, 0.87058824)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
-mesh = SubResource("BoxMesh_jw4ub")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0153704, 6.1499043, -4.694782)
@@ -83,9 +76,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.593956, -0.37304735, 10.27
 shape = SubResource("BoxShape3D_dr53j")
 
 [node name="mast" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5648804, 5.823974, 1.1907349)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5648804, 6.1095576, 1.1907349)
 shape = SubResource("BoxShape3D_ewwb0")
 debug_color = Color(0, 0.5950001, 0.7, 0.8509804)
 
 [node name="Dropoff" parent="." instance=ExtResource("3_myh2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.276636, -8.171795)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3196468, -8.171795)

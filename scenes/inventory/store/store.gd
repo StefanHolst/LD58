@@ -1,7 +1,7 @@
 extends Panel
 
 @export var pistol_scene: PackedScene
-#@export var shotgun_scene: PackedScene
+@export var shotgun_scene: PackedScene
 #@export var boat_scene: PackedScene
 #var pistol_scene = preload("res://scenes/guns/pistol/pistol.tscn")
 
@@ -64,7 +64,11 @@ func _items_buy(index: int):
 		if Resources.papCounter > Resources.ITEM_PRICE_SHOTGUN:
 			Resources.remove_pap(Resources.ITEM_PRICE_SHOTGUN)
 			Resources.items |= Resources.ItemType.Shotgun
-			# TODO: spawn the shotgun
+			# spawn the shotgun
+			var shotgun = shotgun_scene.instantiate()
+			var forward = -Resources.player.global_transform.basis.z
+			shotgun.global_position = Resources.player.global_position + forward * 3.0
+			get_tree().current_scene.add_child(shotgun)
 	if index == 2:
 		if Resources.papCounter > Resources.ITEM_PRICE_BOAT:
 			Resources.remove_pap(Resources.ITEM_PRICE_BOAT)

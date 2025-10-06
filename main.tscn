@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://doads7dih65sc" path="res://scenes/tree/tree.tscn" id="14_w48qg"]
 [ext_resource type="PackedScene" uid="uid://37wcumei7bs" path="res://monkey_island.tscn" id="15_vivmo"]
 [ext_resource type="PackedScene" uid="uid://mi3fgusatys0" path="res://scenes/ko/ko.tscn" id="18_074og"]
+
 [ext_resource type="PackedScene" uid="uid://dm8ppqbdyjyin" path="res://scenes/win_zone/win_zone.tscn" id="19_cegan"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lquwl"]
@@ -24,7 +25,7 @@
 [sub_resource type="BoxMesh" id="BoxMesh_1bvp3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4c57u"]
-size = Vector3(314.5865, 12.760513, 300.36176)
+size = Vector3(314.5865, 12.189579, 300.36176)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_ig7tw")
@@ -113,16 +114,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3515263, 2.4380922, -8.6741
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0205717, 8.419209, 20.991156)
 
 [node name="Water" parent="." instance=ExtResource("10_4c57u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5636215, -9.576641, 0.43640137)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5636215, -10.3755245, 0.43640137)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9870605, -28.633835, 3.6683197)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9870605, -18.13687, 3.6683197)
 shape = SubResource("BoxShape3D_4c57u")
 
 [node name="boat" parent="." instance=ExtResource("11_efxa6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8604012, -9.559592, 63.90151)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8604012, -9.445353, 63.90151)
 
 [node name="trees" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4031439, 0)

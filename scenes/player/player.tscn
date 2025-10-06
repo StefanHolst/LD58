@@ -34,15 +34,17 @@ environment = SubResource("Environment_dovo2")
 current = true
 script = ExtResource("2_p47bc")
 
-[node name="grab" type="RayCast3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, -0.0032972407, -0.99785405, 0, 2.8622787, -0.0011494915, 0.28517473, -0.24450481, -0.31017515)
+[node name="grab_left" type="Node3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.99999934, -0.0011518373, 0, 0.0011518373, 0.99999934, -1.7148253, -0.24120748, -1.1724539)
+
+[node name="grab_right" type="Node3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.99999934, -0.0011518373, 0, 0.0011518373, 0.99999934, 2.2851748, -0.24120754, -1.1724539)
+
+[node name="grab" type="RayCast3D" parent="Camera3D" node_paths=PackedStringArray("grab_left", "grab_right")]
+transform = Transform3D(1.397, 0, 0, 0, -1.7484555e-07, -1.395, 0, 4, -6.0977385e-08, 0, 0, 0)
 script = ExtResource("2_dovo2")
-
-[node name="grab_left" type="Node3D" parent="Camera3D/grab"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1, -1, -5.9604645e-08)
-
-[node name="grab_right" type="Node3D" parent="Camera3D/grab"]
-transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 1, 0, -0.99999994, -4.371139e-08, 1, -1, 0)
+grab_left = NodePath("../grab_left")
+grab_right = NodePath("../grab_right")
 
 [node name="ship_detector" type="Area3D" parent="."]
 script = ExtResource("3_gmlin")
