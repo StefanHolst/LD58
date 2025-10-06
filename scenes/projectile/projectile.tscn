@@ -3,15 +3,15 @@
 [ext_resource type="Script" uid="uid://c3mt21yjvaurc" path="res://scenes/projectile/projectile.gd" id="1_t8015"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_iprlq"]
-top_radius = 0.01
-bottom_radius = 0.02
-height = 0.1
+top_radius = 0.02
+bottom_radius = 0.04
+height = 0.2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t8015"]
 albedo_color = Color(0.5, 0.3935, 0.14500001, 1)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2dulq"]
-points = PackedVector3Array(-0.011267977, 0.050793648, 0.003012454, 0.007775291, -0.050793648, 0.020476189, 0.0061876783, -0.047611587, -0.02079365, 0.010950515, 0.050793648, -0.004917528, -0.00650514, 0.042848438, -0.011267977, 0.007775291, 0.050793648, 0.009358863, -0.011267977, -0.050793648, 0.018888576, 0.020476189, -0.050793648, 0.007775291, -0.012855589, -0.050793648, -0.017614387, 0.018888576, -0.050793648, -0.011267977, -0.004917528, 0.050793648, 0.010950515, 0.004600066, 0.049202617, -0.011267977, -0.02079365, -0.047611587, -0.00650514, -0.019206038, -0.041267354, 0.009358863, -0.009676325, 0.050793648, -0.00650514, -0.00650514, -0.047611587, -0.02079365, 0.0141217, -0.038095236, 0.015713353, 0.012538128, -0.042848438, -0.017614387, 0.020476189, -0.04443947, -0.00650514, 0.012538128, 0.041267354, 0.0014208019, -0.00650514, -0.04443947, 0.020476189, 0.0014208019, 0.041267354, 0.012538128, -0.009676325, 0.049202617, 0.007775291, -0.016030814, -0.042848438, -0.014439162, -0.02079365, -0.047611587, 0.0061876783, 0.010950515, 0.0460305, 0.0061876783, 0.009358863, 0.049202617, -0.008092753, -0.0017382636, 0.038095236, -0.012855589, -0.012855589, 0.038095236, -0.0017382636, -0.014439162, -0.041267354, 0.015713353, 0.018888576, -0.0460305, 0.010950515, 0.007775291, -0.047611587, 0.020476189)
+[sub_resource type="BoxShape3D" id="BoxShape3D_t8015"]
+size = Vector3(0.02, 0.08, 0.2)
 
 [node name="Projectile" type="Area3D" groups=["projectile"]]
 script = ExtResource("1_t8015")
@@ -22,6 +22,6 @@ mesh = SubResource("CylinderMesh_iprlq")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_t8015")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_2dulq")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.3562224e-05, 0)
+shape = SubResource("BoxShape3D_t8015")

@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var projectile_scene: PackedScene
-var fire_rate: float = 0.5
+var fire_rate: float = 1
 var _last_shot: float = 0
 var _can_shoot = true
 var _trigger_released = true
@@ -21,13 +21,28 @@ func _physics_process(delta: float) -> void:
 		_last_shot = 0
 
 func trigger():
-	if _can_shoot and _trigger_released and Resources.papCounter >= 1:
+	if _can_shoot and _trigger_released and Resources.papCounter >= 5:
 		_trigger_released = false
 		_can_shoot = false
-		Resources.remove_pap(1)
-		var projectile = projectile_scene.instantiate()
-		get_tree().current_scene.add_child(projectile)
-		projectile.spawn($RigidBody3D.global_position, -$RigidBody3D.global_transform.basis.z)
+		
+		Resources.remove_pap(5)
+		for i in 5:
+			var projectile = projectile_scene.instantiate()
+			get_tree().current_scene.add_child(projectile)
+			
+			# Spread the shotgun shots
+			var dir = -$RigidBody3D.global_transform.basis.z
+			var pos = $RigidBody3D.global_position
+			
+			var spread_angle = 0.05  # radians (~3 degrees)
+			dir = (dir + Vector3(
+				randf_range(-spread_angle, spread_angle),
+				randf_range(-spread_angle, spread_angle),
+				randf_range(-spread_angle, spread_angle)
+			)).normalized()
+			
+			projectile.spawn(pos, dir)
+		
 
 func release():
 	_trigger_released = true
