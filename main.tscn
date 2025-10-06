@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c6dd3yagmchk6"]
+[gd_scene load_steps=21 format=3 uid="uid://c6dd3yagmchk6"]
 
 [ext_resource type="Script" uid="uid://bxbhspteetyt8" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://bregitexpwreq" path="res://scenes/item_spawner/item_spawner.gd" id="3_2cqfq"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cbbcxcuyrt7gi" path="res://scenes/boat/boat.tscn" id="11_efxa6"]
 [ext_resource type="PackedScene" uid="uid://doads7dih65sc" path="res://scenes/tree/tree.tscn" id="14_w48qg"]
 [ext_resource type="PackedScene" uid="uid://37wcumei7bs" path="res://monkey_island.tscn" id="15_vivmo"]
+[ext_resource type="PackedScene" uid="uid://ddnrvly6m6co5" path="res://scenes/papisland.tscn" id="17_yaehf"]
 [ext_resource type="PackedScene" uid="uid://mi3fgusatys0" path="res://scenes/ko/ko.tscn" id="18_074og"]
 [ext_resource type="PackedScene" uid="uid://dm8ppqbdyjyin" path="res://scenes/win_zone/win_zone.tscn" id="19_cegan"]
 
@@ -36,7 +37,7 @@ light_color = Color(0.93380576, 0.9306131, 0.51845384, 1)
 shadow_enabled = true
 
 [node name="player" parent="." instance=ExtResource("3_h2yge")]
-transform = Transform3D(-0.9217617, 0, 0.38775688, 0, 1, 0, -0.38775688, 0, -0.9217617, 9.054054, 9.664864, 30.93634)
+transform = Transform3D(-0.9217617, 0, 0.38775688, 0, 1, 0, -0.38775688, 0, -0.9217617, -17.752184, 9.664864, 527.7343)
 gravity = Vector3(0, -50, 0)
 speed = 10.0
 jump_height = 10.0
@@ -118,3 +119,6 @@ transform = Transform3D(-2.9968832, 0, -0.13671643, 0, 3, 0, 0.13671643, 0, -2.9
 
 [node name="WinZone" parent="Islands/monkey_island" instance=ExtResource("19_cegan")]
 transform = Transform3D(-0.332987, 0, 0.015190714, 0, 0.33333334, 0, -0.015190714, 0, -0.332987, 0.45370913, 8.850008, -1.9047241)
+
+[node name="papisland" parent="Islands" instance=ExtResource("17_yaehf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9026337, -4.8572693, 540.313)

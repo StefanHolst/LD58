@@ -19,7 +19,7 @@ func _search_for_player() -> Node3D:
 	var players = get_tree().get_nodes_in_group("player")
 	for p in players:
 		if p is Node3D:
-			var d = p.position.distance_squared_to(position)
+			var d = p.global_position.distance_squared_to(global_position)
 			if d <= d_max_sq:
 				return p
 	
@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 	if player == null:
 		return
 	
-	var n = (player.position - position)
+	var n = (player.global_position - global_position)
 	var d = n.length()
 	if d < attack_distance:
 		animation_player.play("attack")
@@ -47,7 +47,7 @@ func _process(delta: float) -> void:
 		apply_impulse(n * move_force / d)
 
 func compute_attack_dir() -> void:
-	attack_force_dir = -attack_target.position.direction_to(position)
+	attack_force_dir = -attack_target.global_position.direction_to(global_position)
 
 func attack_player() -> void:
 	var n = attack_force_dir
@@ -56,8 +56,8 @@ func attack_player() -> void:
 
 func reorient() -> void:
 	inertia = Vector3(0,0,0)
-	var p = attack_target.position
-	look_at(Vector3(p.x, position.y, p.z), Vector3(0,1,0), true)
+	var p = attack_target.global_position
+	look_at(Vector3(p.x, global_position.y, p.z), Vector3(0,1,0), true)
 
 func on_hit():
 	queue_free()
