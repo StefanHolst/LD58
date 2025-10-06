@@ -6,4 +6,4 @@ func _ready() -> void:
 func _on_body_entered(item: Node):
 	if item.is_in_group("grabable"):
 		Resources.add_pap(1)
-		Resources.dropped_item.queue_free()
+		item.queue_free()
