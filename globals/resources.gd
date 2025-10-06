@@ -48,6 +48,9 @@ func remove_pap(pieces: int):
 
 func pick_up(item: Node, is_left_hand: bool):
 	drop(is_left_hand)
+	if item is RigidBody3D:
+		item.freeze = true
+			
 	if is_left_hand:
 		leftHand = item
 	else:
@@ -60,8 +63,6 @@ func store(is_left_hand: bool):
 			leftHand = null
 			_inventory_item_parent = inventory_item.get_parent()
 			_inventory_item_parent.remove_child(inventory_item)
-			if inventory_item is RigidBody3D:
-				inventory_item.freeze = true
 			emit_signal("item_stored")
 	else:
 		if rightHand != null:
@@ -69,8 +70,6 @@ func store(is_left_hand: bool):
 			rightHand = null
 			_inventory_item_parent = inventory_item.get_parent()
 			_inventory_item_parent.remove_child(inventory_item)
-			if inventory_item is RigidBody3D:
-				inventory_item.freeze = true
 			emit_signal("item_stored")
 
 func drop(is_left_hand: bool):
@@ -80,6 +79,8 @@ func drop(is_left_hand: bool):
 		dropped_item = leftHand
 		if dropped_item is Node3D:
 			dropped_item.basis = Basis()
+		if dropped_item is RigidBody3D:
+			dropped_item.freeze = false
 		leftHand = null
 		emit_signal("item_dropped")
 	else:
@@ -88,6 +89,8 @@ func drop(is_left_hand: bool):
 		dropped_item = rightHand
 		if dropped_item is Node3D:
 			dropped_item.basis = Basis()
+		if dropped_item is RigidBody3D:
+			dropped_item.freeze = false
 		rightHand = null
 		emit_signal("item_dropped")
 
@@ -97,8 +100,6 @@ func unstore(is_left_hand: bool):
 
 	emit_signal("item_unstored")
 	get_tree().root.add_child(inventory_item)
-	if inventory_item is RigidBody3D:
-		inventory_item.freeze = false
 				
 	if is_left_hand:
 		leftHand = inventory_item

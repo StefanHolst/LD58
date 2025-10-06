@@ -1,9 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://c6dd3yagmchk6"]
+[gd_scene load_steps=21 format=3 uid="uid://c6dd3yagmchk6"]
 
 [ext_resource type="Script" uid="uid://bxbhspteetyt8" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://wob35ulaccic" path="res://Pap.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://deus3skfx84ny" path="res://scenes/player/player.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" path="res://scenes/cylinder_island.tscn" id="4_272bh"]
+[ext_resource type="PackedScene" uid="uid://5wmiepei03d8" path="res://scenes/cylinder_island.tscn" id="4_272bh"]
 [ext_resource type="PackedScene" uid="uid://cyjl465s2j56k" path="res://scenes/guns/pistol/pistol.tscn" id="5_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://c264qgxmeykl4" path="res://assets/blender/papcat.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://xg2n633dmlgi" path="res://scenes/inventory/hud/hud.tscn" id="6_7mycd"]
@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cabe835u6wdmy" path="res://scenes/Water.tscn" id="10_4c57u"]
 [ext_resource type="PackedScene" uid="uid://cbbcxcuyrt7gi" path="res://scenes/boat/boat.tscn" id="11_efxa6"]
 [ext_resource type="PackedScene" uid="uid://c3slufbahiqnm" path="res://assets/blender/tree.blend" id="12_dg77c"]
-[ext_resource type="Script" path="res://scenes/bad_billboard.gd" id="13_ycdy4"]
+[ext_resource type="Script" uid="uid://djqtam2gv2nx2" path="res://scenes/bad_billboard.gd" id="13_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://lxevycgsnj1y" path="res://scenes/tree/tree.tscn" id="14_w48qg"]
 [ext_resource type="PackedScene" uid="uid://37wcumei7bs" path="res://monkey_island.tscn" id="15_vivmo"]
 
@@ -98,6 +98,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.98641, -11.41741, -15.02670
 visible = false
 
 [node name="death_ui_screen" parent="Overlay" instance=ExtResource("8_2cqfq")]
+visible = false
 
 [node name="ged" parent="." instance=ExtResource("8_5vw27")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2512884, 8.419209, 20.991156)
