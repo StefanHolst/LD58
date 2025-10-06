@@ -1,5 +1,7 @@
 extends Node3D
 
+@onready var bgMusicPlayer: AudioStreamPlayer = $BackgroundMusic
+
 var mouse_capture_enabled = false
 
 func _input(event: InputEvent) -> void:
@@ -24,3 +26,11 @@ func _input(event: InputEvent) -> void:
 				mouse_capture_enabled = true
 		if event.keycode == KEY_0:
 			Resources.add_pap(1000)
+
+
+func _on_music_replay_timer_timeout() -> void:
+	bgMusicPlayer.play()
+
+
+func _on_background_music_finished() -> void:
+	$BackgroundMusic/ReplayTimer.start(30)

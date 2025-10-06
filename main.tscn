@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c6dd3yagmchk6"]
+[gd_scene load_steps=22 format=3 uid="uid://c6dd3yagmchk6"]
 
 [ext_resource type="Script" uid="uid://bxbhspteetyt8" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://bregitexpwreq" path="res://scenes/item_spawner/item_spawner.gd" id="3_2cqfq"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://ddnrvly6m6co5" path="res://scenes/papisland.tscn" id="17_yaehf"]
 [ext_resource type="PackedScene" uid="uid://mi3fgusatys0" path="res://scenes/ko/ko.tscn" id="18_074og"]
 [ext_resource type="PackedScene" uid="uid://bq3nnvl8due02" path="res://arena_island.tscn" id="20_82xsv"]
+[ext_resource type="AudioStream" uid="uid://6t06wx8phl7u" path="res://assets/sound/main_song.mp3" id="20_getpj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4c57u"]
 size = Vector3(314.5865, 12.189579, 300.36176)
@@ -29,11 +30,12 @@ script = ExtResource("1_ig7tw")
 [node name="sky" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.9296608, 0.36841655, 0, -0.36841655, -0.9296608, 0, 27.506788, 16.752277)
 light_color = Color(0.3660293, 0.4753452, 0.97886604, 1)
-light_energy = 0.5
+light_energy = 0.139
 
 [node name="sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.63889414, 0.7638929, -0.09100571, -0.4302094, 0.45284775, 0.78092813, 0.63775724, -0.4597789, 0.6179556, -1.9083719, 30, 27.097626)
 light_color = Color(0.93380576, 0.9306131, 0.51845384, 1)
+light_energy = 0.038
 shadow_enabled = true
 
 [node name="player" parent="." instance=ExtResource("3_h2yge")]
@@ -122,3 +124,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.981255, -4.8572693, 577.7
 
 [node name="arena_island" parent="Islands" instance=ExtResource("20_82xsv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 222.90623, -11.044371, 826.2137)
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_getpj")
+volume_db = -4.0
+autoplay = true
+
+[node name="ReplayTimer" type="Timer" parent="BackgroundMusic"]
+wait_time = 60.0
+
+[connection signal="finished" from="BackgroundMusic" to="." method="_on_background_music_finished"]
+[connection signal="timeout" from="BackgroundMusic/ReplayTimer" to="." method="_on_music_replay_timer_timeout"]
