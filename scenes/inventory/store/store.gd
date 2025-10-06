@@ -44,8 +44,8 @@ func _upgrades_list():
 		Upgrades.add_item("Pistol")
 	if Resources.items_unlocked & ItemType.Shotgun != 0:
 		Upgrades.add_item("Shotgun")
-	if Resources.items_unlocked & ItemType.Boat != 0:
-		Upgrades.add_item("Boat")
+	#if Resources.items_unlocked & ItemType.Boat != 0:
+		#Upgrades.add_item("Boat")
 
 func _upgrades_selected(index: int):
 	var selected_text = Upgrades.get_item_text(index)
@@ -62,7 +62,7 @@ func _upgrades_selected(index: int):
 func _items_list():
 	$VBoxContainer/HBoxContainer/Items/Items.add_item("Pistol (" + str(ITEM_PRICE_PISTOL) + "p)")
 	$VBoxContainer/HBoxContainer/Items/Items.add_item("Shotgun (" + str(ITEM_PRICE_SHOTGUN) + "p)")
-	$VBoxContainer/HBoxContainer/Items/Items.add_item("Boat (" + str(ITEM_PRICE_BOAT) + "p)")
+	#$VBoxContainer/HBoxContainer/Items/Items.add_item("Boat (" + str(ITEM_PRICE_BOAT) + "p)")
 
 func _items_buy(index: int):
 	$VBoxContainer/HBoxContainer/Items/Items.deselect_all()
