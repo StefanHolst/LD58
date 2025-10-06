@@ -50,4 +50,4 @@ func _process(dt: float) -> void:
 		animation_player.play("fire")
 
 func get_value() -> int:
-	return 500
+	return 40

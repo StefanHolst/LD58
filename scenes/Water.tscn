@@ -40,7 +40,7 @@ mesh = SubResource("PlaneMesh_45jge")
 
 [node name="HitBox" type="Area3D" parent="."]
 script = ExtResource("2_vwe2q")
-damage = 10
+damage = 2
 active = true
 damage_over_time = true
 metadata/_custom_type_script = "uid://ce274cw5u16ia"

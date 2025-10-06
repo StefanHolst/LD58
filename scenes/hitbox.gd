@@ -19,8 +19,9 @@ func _on_body_entered(body: Node3D) -> void:
 		Resources.remove_pap(damage)
 		if damage_over_time:
 			take_damage = true
-			last_damage.start(damage_interval_sec)
-			last_damage.paused = false
+			if last_damage:
+				last_damage.start(damage_interval_sec)
+				last_damage.paused = false
 
 func _on_body_exited(body: Node3D) -> void:
 	if not active:
