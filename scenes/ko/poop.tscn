@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://diywwli2heka4"]
+
+[ext_resource type="Script" uid="uid://csbgmsa72x33w" path="res://scenes/ko/poop.gd" id="1_6ynmj"]
+[ext_resource type="Script" uid="uid://ce274cw5u16ia" path="res://scenes/hitbox.gd" id="2_y3d30"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s4bgq"]
+size = Vector3(0.661, 0.462, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6ynmj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y3d30"]
+albedo_color = Color(1, 0.43300003, 0.37, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1ktq7"]
+size = Vector3(0.677063, 0.50279236, 1.0236816)
+
+[node name="Poop" type="RigidBody3D" groups=["grabable"]]
+script = ExtResource("1_6ynmj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013412476, -0.05413246, -0.013736725)
+shape = SubResource("BoxShape3D_s4bgq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.65433306, 0, 0, 0, 0.47346687, 0, 0, 0, 1, -0.007987171, -0.056956828, 0)
+mesh = SubResource("BoxMesh_6ynmj")
+surface_material_override/0 = SubResource("StandardMaterial3D_y3d30")
+
+[node name="lifetime" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="HitBox" type="Area3D" parent="."]
+script = ExtResource("2_y3d30")
+active = true
+metadata/_custom_type_script = "uid://ce274cw5u16ia"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009246826, -0.05973053, 0.0015869141)
+shape = SubResource("BoxShape3D_1ktq7")
+debug_color = Color(0.56950426, 0.40810946, 0.96155065, 0.41960785)
+
+[connection signal="timeout" from="lifetime" to="." method="_on_lifetime_timeout"]
