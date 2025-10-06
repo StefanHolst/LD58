@@ -1,5 +1,5 @@
 class_name tree
-extends Node3D
+extends RigidBody3D
 
 func find_player() -> Node3D:
 	for n in get_tree().get_nodes_in_group("player"):
@@ -7,7 +7,7 @@ func find_player() -> Node3D:
 			return n
 	return
 
-func _process(dt: float) -> void:
+func _physics_process(dt: float) -> void:
 	var player = find_player()
 	if player != null:
 		var new_target = Basis.looking_at(player.position - (position + Vector3(0, 2, 0)), Vector3.UP, true)

@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=4 uid="uid://doads7dih65sc"]
+[gd_scene load_steps=9 format=4 uid="uid://doads7dih65sc"]
 
+[ext_resource type="Script" uid="uid://blrmvhoslcrjs" path="res://scenes/tree/tree.gd" id="1_2bbdv"]
 [ext_resource type="Texture2D" uid="uid://bkkwmio4r1ap1" path="res://assets/textures/tree.png" id="1_mbf7r"]
 [ext_resource type="Texture2D" uid="uid://b8xv1u2116x3x" path="res://assets/textures/pap.png" id="2_2bbdv"]
 
@@ -70,9 +71,11 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_tsl7d")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ttu04"]
-size = Vector3(2.9248047, 2.7774353, 0.2822876)
+size = Vector3(2.9248047, 3.017601, 0.2822876)
 
 [node name="Tree" type="RigidBody3D" groups=["grabable"]]
+center_of_mass_mode = 1
+script = ExtResource("1_2bbdv")
 
 [node name="Plane" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0.33653402, 1.2836576, 0)
@@ -80,5 +83,5 @@ mesh = SubResource("ArrayMesh_4ol1s")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.072753906, 1.6140046, -0.049468994)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.072753906, 1.4939218, -0.049468994)
 shape = SubResource("BoxShape3D_ttu04")
