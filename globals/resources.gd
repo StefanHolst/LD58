@@ -1,7 +1,7 @@
 extends Node
 class_name ResoucesHandler
 
-const INITIAL_PAP_COUNT = 5
+const INITIAL_PAP_COUNT = 20
 
 signal pap
 signal damage_taken
