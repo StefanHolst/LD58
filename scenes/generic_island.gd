@@ -18,6 +18,6 @@ func _on_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		is_sinking = false
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if is_sinking:
 		global_position.y -= sink_rate * delta
