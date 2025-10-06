@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://bxbhspteetyt8" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://wob35ulaccic" path="res://Pap.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://deus3skfx84ny" path="res://scenes/player/player.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://5wmiepei03d8" path="res://scenes/cylinder_island.tscn" id="4_272bh"]
+[ext_resource type="PackedScene" path="res://scenes/cylinder_island.tscn" id="4_272bh"]
+[ext_resource type="PackedScene" uid="uid://cyjl465s2j56k" path="res://scenes/guns/pistol/pistol.tscn" id="5_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://c264qgxmeykl4" path="res://assets/blender/papcat.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://xg2n633dmlgi" path="res://scenes/inventory/hud/hud.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://q1o0ds2up5pi" path="res://scenes/death_ui_screen/death_ui_screen.tscn" id="8_2cqfq"]
@@ -13,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cabe835u6wdmy" path="res://scenes/Water.tscn" id="10_4c57u"]
 [ext_resource type="PackedScene" uid="uid://cbbcxcuyrt7gi" path="res://scenes/boat/boat.tscn" id="11_efxa6"]
 [ext_resource type="PackedScene" uid="uid://c3slufbahiqnm" path="res://assets/blender/tree.blend" id="12_dg77c"]
-[ext_resource type="Script" uid="uid://djqtam2gv2nx2" path="res://scenes/bad_billboard.gd" id="13_ycdy4"]
+[ext_resource type="Script" path="res://scenes/bad_billboard.gd" id="13_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://lxevycgsnj1y" path="res://scenes/tree/tree.tscn" id="14_w48qg"]
 [ext_resource type="PackedScene" uid="uid://37wcumei7bs" path="res://monkey_island.tscn" id="15_vivmo"]
 
@@ -41,7 +42,7 @@ shadow_enabled = true
 transform = Transform3D(0.99521023, -0.097756594, 0, 0.097756594, 0.99521023, 0, 0, 0, 1, 0.27787733, 4.3884277, 0.445323)
 visible = false
 
-[node name="Ground" type="Node3D" parent="."]
+[node name="Ground" type="Node3D" parent="." groups=["terrain"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="cylinder_island" parent="Ground" instance=ExtResource("4_272bh")]
@@ -70,6 +71,9 @@ shape = SubResource("BoxShape3D_lquwl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="box"]
 mesh = SubResource("BoxMesh_1bvp3")
+
+[node name="Pistol" parent="." instance=ExtResource("5_2cqfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32)
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 36)
