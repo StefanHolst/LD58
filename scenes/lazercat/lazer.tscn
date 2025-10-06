@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5vje4twdvm1v"]
+
+[ext_resource type="Script" uid="uid://d1n1ucp4dukvl" path="res://scenes/lazercat/lazer.gd" id="1_wduae"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_n5jjl"]
+top_radius = 0.1
+bottom_radius = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wduae"]
+albedo_color = Color(1, 0.19, 0.19, 1)
+emission_enabled = true
+emission = Color(0.63, 0.17639998, 0.17639998, 1)
+emission_energy_multiplier = 2.0
+
+[node name="Lazer" type="Node3D"]
+script = ExtResource("1_wduae")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, -4.371139e-08, 0, 0, 0)
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_n5jjl")
+surface_material_override/0 = SubResource("StandardMaterial3D_wduae")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

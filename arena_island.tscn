@@ -35,6 +35,7 @@ attack_distance = 100.0
 
 [node name="Ko4" parent="." index="6" instance=ExtResource("2_146aq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.48862, 43.4494, 5.119896)
+attack_distance = 100.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="7"]
 

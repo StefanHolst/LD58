@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://btxfpf37neky7"]
+
+[ext_resource type="PackedScene" uid="uid://b2qwnvo6no8ye" path="res://assets/blender/papcat.blend" id="1_rpkou"]
+[ext_resource type="Script" uid="uid://2toij2sqnngt" path="res://scenes/lazercat/lazercat.gd" id="1_u8a3h"]
+[ext_resource type="PackedScene" uid="uid://c5vje4twdvm1v" path="res://scenes/lazercat/lazer.tscn" id="2_wls4t"]
+
+[node name="lazercat" type="Node3D"]
+script = ExtResource("1_u8a3h")
+
+[node name="papcat" parent="." instance=ExtResource("1_rpkou")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.6770338, -15.11268, 0)
+
+[node name="Lazer" parent="." instance=ExtResource("2_wls4t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.43918163, 0.26964855, 0.20860246)
+
+[node name="Lazer2" parent="." instance=ExtResource("2_wls4t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.606016, 0.9062846, 0.20860246)
